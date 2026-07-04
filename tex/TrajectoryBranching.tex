@@ -1,0 +1,553 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\input{glyphtounicode}
+\pdfgentounicode=1
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{doi}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+
+\newcommand{\Heis}{\mathrm{Heis}_3}
+\newcommand{\Zq}{\mathbb{Z}/q\mathbb{Z}}
+\newcommand{\PiProj}{\Pi}
+\newcommand{\Ndist}{N_{\mathrm{dist}}}
+\newcommand{\Nb}{N_b}
+\newcommand{\hb}{h_b}
+
+\title{Projective Trajectory Branching and the de Sitter Limit}
+\author{J\'er\^ome Beau}
+\date{July 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The de Sitter solution shows that accelerated expansion can be a property of empty geometry rather than a
+consequence of matter content.
+This note identifies the projective analogue of that statement inside the Heisenberg spectral admissibility
+cascade.
+The result does not claim that Heisenberg balls grow exponentially.
+They do not: by the Bass--Guivarc'h formula their growth is polynomial of degree four.
+The exponential component survives only after replacing endpoint counting by projectively distinguishable
+trajectory counting.
+We define a hierarchy of trajectory distinguishability notions and show that any endpoint-based definition
+collapses to polynomial growth.
+The canonical O12-compatible residual channel is $b$-only and therefore bounded by the non-backtracking
+abelian-shadow entropy.
+For a generic probe, the residual profile separates the $b$-sequences on the pre-saturation window.
+Consequently, the distinguishable-history count is the Pell count
+\[
+\Nb(n)=2\Nb(n-1)+\Nb(n-2),
+\qquad
+\hb=\lim_{n\to\infty}\tfrac{1}{n}\log \Nb(n)=\log(1+\sqrt{2}).
+\]
+The equality is witnessed exactly on the sampled histories of a multi-prime campaign
+($q\in\{29,61,101,211\}$) and the genericity condition on the probe is proved to fail only on a finite union
+of proper real-algebraic hypersurfaces.
+The full-history Gabor channel displays additional projective compression and is retained as the open
+candidate for an evolving effective equation of state.
+The cosmological conclusion is structural: accelerated expansion, if inherited by the cosmological branch,
+is not driven by exponential growth of Heisenberg states but by exponential branching of projectively
+distinguishable histories.
+\end{abstract}
+
+\medskip
+\noindent\textbf{Keywords:} non-injective projection; Heisenberg group; spectral admissibility;
+trajectory branching; projection entropy; de Sitter expansion; Pell numbers; dark energy.
+
+\newpage
+\tableofcontents
+
+\newpage
+\section{Motivation}
+\label{sec:motivation}
+
+The historical de Sitter solution~\cite{deSitter1917} establishes that accelerated expansion need not be
+sourced by ordinary matter, and the Milne model~\cite{Milne1935} shows that even a linearly coasting empty
+universe is not trivially excluded by expansion data.
+In the projective setting considered here, the analogous question is whether accelerated expansion can arise
+from the growth of admissible projection histories rather than from a material dark-energy component.
+
+The issue is non-trivial because the spectral admissibility programme moved from LPS expander
+graphs~\cite{Lubotzky1988,Beau2026a5} to the Heisenberg Cayley graph
+$\Heis(\Zq)$~\cite{Beau2026a16,Beau2026a20}.
+LPS balls have exponential growth, whereas Heisenberg balls have polynomial growth.
+Therefore the two-regime expansion mechanism proposed in the relaxation paper~\cite{Beau2026a5} --- polynomial
+shell growth followed by exponential branching of admissible trajectories --- cannot be transferred by
+counting endpoints.
+The only possible surviving exponential component must live in the redundancy of histories over endpoints.
+
+This note isolates that component, proves where it can and cannot reside, pins its rate in the canonical
+channel, and states precisely what is and is not established for the cosmological
+branch~\cite{Beau2026d,Cosmochrony}.
+
+\section{Endpoint Growth and the Heisenberg Obstruction}
+\label{sec:endpoint}
+
+\subsection{Polynomial endpoint growth}
+\label{sec:bass-guivarch}
+
+Let $B(n)$ denote the ball of radius $n$ in the discrete Heisenberg group with generating set
+$S=\{X^{\pm1},Y^{\pm1}\}$.
+By the Bass--Guivarc'h formula~\cite{Bass1972,Guivarch1973}, the homogeneous growth degree of the integer
+Heisenberg group is
+\[
+D = 1+1+2\cdot 1 = 4 ,
+\]
+so $|B(n)| \asymp n^4$ before finite-$q$ saturation, and $|B(n)|$ saturates at $q^3$ on $\Heis(\Zq)$.
+
+\begin{proposition}[Endpoint obstruction]
+\label{prop:endpoint-obstruction}
+Any distinguishability relation depending only on the endpoint in $\Heis(\Zq)$ has polynomial pre-saturation
+growth and finite-$q$ saturation.
+It cannot support an asymptotic de Sitter-like exponential rate.
+\end{proposition}
+
+\begin{proof}
+Any endpoint-based invariant factors through the Heisenberg element $(a,b,\gamma)$ reached at time $n$.
+The number of reachable values is bounded by the ball volume, which has polynomial Bass--Guivarc'h growth of
+degree $4$ and saturates at $q^3$.
+Both bounds have zero exponential rate.
+\end{proof}
+
+\subsection{Why the central fibre is not enough}
+\label{sec:central-fibre}
+
+The central coordinate $\gamma$ records the oriented area swept by the horizontal projection of the path.
+This is a genuine history integral --- the level-two term of the Chen signature of the path~\cite{Chen1957}
+--- but it is the only one the group retains.
+A step-two nilpotent endpoint truncates the signature at level two: iterated path information of order three
+or higher is erased by the group structure itself.
+Counting the central register therefore does not change the growth class: the degree $4$ already decomposes
+as $2$ (abelian displacement) $+\,2$ (area values $\asymp n^2$).
+
+\begin{corollary}[Endpoint no-go]
+\label{cor:endpoint-nogo}
+Any invariant that is a function of $(a,b,\gamma)$ has zero exponential distinguishability rate before
+finite-$q$ saturation.
+\end{corollary}
+
+\section{Trajectory Distinguishability}
+\label{sec:distinguishability}
+
+Throughout, a trajectory is a non-backtracking word $\gamma=(g_1,\dots,g_n)\in S^n$, $g_{k+1}\neq g_k^{-1}$,
+identified with the path $u_0=e$, $u_k=u_{k-1}g_k$ in $\Heis(\Zq)$.
+The number of such words is $4\cdot 3^{\,n-1}$, so the unconstrained history entropy rate is $\log 3$.
+
+\begin{definition}[D1: endpoint distinguishability]
+\label{def:d1}
+Two trajectories are D1-distinguishable if their final Heisenberg endpoints are distinct.
+\end{definition}
+
+\begin{definition}[D2: fibre-register distinguishability]
+\label{def:d2}
+Two trajectories are D2-distinguishable if their final abelian displacement or their final central register
+are distinct.
+\end{definition}
+
+\begin{definition}[D3: endpoint-functional distinguishability]
+\label{def:d3}
+Two trajectories are D3-distinguishable if some fixed function of their final Heisenberg endpoint separates
+them.
+\end{definition}
+
+\begin{definition}[D4: projective trajectory distinguishability]
+\label{def:d4}
+Two trajectories $\gamma,\gamma'$ of length $n$ are D4-distinguishable if their projected trajectory profiles
+differ,
+\[
+\PiProj(U_n(\gamma))\neq \PiProj(U_n(\gamma')) ,
+\]
+where $U_n(\gamma)$ is the sequence of projective data accumulated along the path, not only the endpoint.
+\end{definition}
+
+D1 and D2 are endpoint notions and D2 $=$ D1 on $\Heis(\Zq)$ by Section~\ref{sec:central-fibre}.
+D3 is the full endpoint no-go class of Corollary~\ref{cor:endpoint-nogo}.
+D4 is the only class capable of retaining exponential history branching, and the remainder of the note
+determines how much of the $\log 3$ word entropy a concrete projective profile retains.
+
+\section{The Canonical O12 Residual Channel}
+\label{sec:canonical-channel}
+
+\subsection{Setting}
+\label{sec:setting}
+
+Fix a prime $q$ and a central character $c\neq 0$.
+The O12 pipeline~\cite{Beau2026a16} acts with the exact Weil representation $\rho_c$ of $\Heis(\Zq)$ on
+$\mathbb{C}^q$,
+\[
+[\rho_c(a,b,\gamma)\varphi](x) = \psi_c\!\bigl(\gamma+b(x-a)\bigr)\,\varphi(x-a),
+\qquad
+\psi_c(t)=e^{2\pi i c t/q},
+\]
+builds fingerprint vectors over BFS shells, and accumulates their Gram--Schmidt span.
+The D4 profile of a trajectory used here is the sequence of residual norms of a probe vector
+$\rho_c(u_k)\,\varphi_0$ against the span frozen at the end of shell $k-1$, together with the conjugate
+factor at $q-c$ following the pair-observable protocol~\cite{Beau2026a20,Beau2026a29}.
+The reference state $\varphi_0$ (the probe) is either the uniform state (the O12 default) or a fixed generic
+unit vector.
+
+\subsection{The character lemma and the $b$-only theorem}
+\label{sec:b-only}
+
+\begin{lemma}[Character structure of the O12 span]
+\label{lem:character}
+Every Weil vector on the uniform state, and every O12 fingerprint vector, has exactly one nonzero Fourier
+coefficient.
+Explicitly, $\rho_c(a,b,\gamma)\,|\mathrm{unif}\rangle$ is a global phase times the additive character
+$e_{cb}$, and a fingerprint built from probe points with $b$-coordinates $b_1,b_2,b_3$ and characters
+$c_1,c_2,c_3$ is a global phase times $e_{c_1b_1+c_2b_2+c_3b_3}$.
+Consequently the O12 span is a coordinate subspace in the Fourier basis: at the end of shell $k$ it equals
+$\mathrm{span}\{e_m : m\in F_k\}$ for a deterministic frequency set $F_k\subseteq\Zq$.
+\end{lemma}
+
+\begin{proof}
+On the uniform state, $[\rho_c(a,b,\gamma)\,\mathrm{unif}](x) = q^{-1/2}\,\psi_c(\gamma-ab)\,e^{2\pi i cbx/q}$,
+a phase times $e_{cb}$.
+A fingerprint is a pointwise product of three such vectors, hence a phase times the character at the sum
+frequency.
+Characters are exactly orthogonal, so the accumulated Gram--Schmidt span is the span of the characters hit,
+independently of the enumeration order within shells.
+\end{proof}
+
+\begin{theorem}[$b$-only residual channel]
+\label{thm:b-only}
+For any probe $\varphi_0$, the residual norm of $\rho_c(a,b,\gamma)\,\varphi_0$ against the frozen O12 span
+at the end of shell $k-1$ equals
+\[
+r_k(b)^2 \;=\; \sum_{m\notin F_{k-1}} \bigl|\widehat{\varphi_0}(m-cb)\bigr|^2 .
+\]
+It is invariant under translation in $a$ and under the central phase $\gamma$, and depends on the path point
+only through $b$.
+The mono-path profile of the canonical channel therefore factors through the $b$-shadow
+$(b_1,\dots,b_n)$ of the trajectory.
+\end{theorem}
+
+\begin{proof}
+In the Fourier basis, modulation by $b$ shifts frequencies by $cb$, translation by $a$ multiplies the $m$-th
+coefficient by a phase, and $\gamma$ contributes a global phase:
+$\widehat{\rho_c(a,b,\gamma)\varphi_0}(m) = e^{i\theta(a,\gamma,m)}\,\widehat{\varphi_0}(m-cb)$.
+The residual against a coordinate subspace $\mathrm{span}\{e_m:m\in F_{k-1}\}$ is the coefficient mass on the
+complement, which discards all phases.
+\end{proof}
+
+\begin{corollary}[Uniform-probe collapse; erased fibre]
+\label{cor:uniform-collapse}
+With the uniform probe, $r_k(b)\in\{0,1\}$ according to whether $cb\in F_{k-1}$, and the channel collapses to
+a binary function of $b$.
+Moreover, for any probe and any irreducible representation, the central charge acts as a global phase, so
+$\gamma$ is unconditionally erased from every mono-path norm profile.
+The erased fibre of the canonical D4 channel is exactly the central register together with the sign data of
+the $X$-steps.
+\end{corollary}
+
+\subsection{Pell counting of $b$-shadows}
+\label{sec:pell}
+
+\begin{proposition}[Pell count]
+\label{prop:pell}
+Let $\Nb(n)$ be the number of $b$-increment sequences realised by non-backtracking trajectories of length
+$n$.
+Then $\Nb(1)=3$, $\Nb(2)=7$, and
+\[
+\Nb(n)=2\Nb(n-1)+\Nb(n-2) \qquad (n\ge 3),
+\]
+so $\Nb(n)=3,7,17,41,99,239,577,1393,3363,\dots$ (the numerators of the continued-fraction convergents of
+$\sqrt2$~\cite{NSW1981}), and
+\[
+\hb=\lim_{n\to\infty}\tfrac1n\log\Nb(n)=\log(1+\sqrt2).
+\]
+\end{proposition}
+
+\begin{proof}
+The increment alphabet is $\{0,+1,-1\}$, emitted by $X^{\pm1}$, $Y$, $Y^{-1}$ respectively.
+Merge $X$ and $X^{-1}$ into one class: the swap $X\leftrightarrow X^{-1}$ is a bijection of non-backtracking
+words preserving $b$-emissions, so the two states generate the same shadow languages.
+Non-backtracking then allows, after class $0$, all three symbols; after $+1$, only $\{0,+1\}$; after $-1$,
+only $\{0,-1\}$.
+The transfer matrix
+\[
+M=\begin{pmatrix}1&1&1\\ 1&1&0\\ 1&0&1\end{pmatrix},
+\qquad
+\Nb(n)=\mathbf{1}^{\!\top} M^{\,n-1}\mathbf{u},\quad \mathbf{u}=(1,1,1)^{\!\top},
+\]
+has characteristic polynomial $(\lambda-1)(\lambda^2-2\lambda-1)$.
+Both $\Nb$ and the sequence defined by the Pell recursion with the same initial values satisfy the associated
+three-term linear recursion and agree at $n=1,2,3$ ($3,7,17$ by direct computation), hence coincide.
+The rate is the Perron root $1+\sqrt2$ of $\lambda^2-2\lambda-1$.
+\end{proof}
+
+\subsection{Generic separation and the branching theorem}
+\label{sec:genericity}
+
+\begin{lemma}[Genericity of profile separation]
+\label{lem:genericity}
+Fix a pre-saturation window $n\le n_{\max}$, meaning $F_k\neq\emptyset$ and $F_k\neq\Zq$ for all $k<n_{\max}$,
+and assume $n_{\max}<q/2$ so that $b$-values do not wrap.
+Then for every unit probe $\varphi_0$ outside a finite union of proper real-algebraic hypersurfaces, distinct
+$b$-shadow sequences induce distinct residual profiles on the window.
+\end{lemma}
+
+\begin{proof}
+Two distinct shadow sequences first differ at some step $k$, with values $b\neq b'$.
+By Theorem~\ref{thm:b-only}, profile equality at step $k$ reads
+$\sum_{m\in A}|\widehat{\varphi_0}(m)|^2=\sum_{m\in B}|\widehat{\varphi_0}(m)|^2$ with
+$A=F_{k-1}^{\,c}-cb$ and $B=F_{k-1}^{\,c}-cb'$.
+If $A=B$ then $F_{k-1}^{\,c}$ is invariant under the nonzero shift $c(b-b')$; since $q$ is prime, a
+shift-invariant subset is $\emptyset$ or $\Zq$, both excluded pre-saturation.
+Hence $A\neq B$ and the equality is a nonzero real quadratic form in $\widehat{\varphi_0}$ vanishing; on the
+unit sphere its zero set is a proper real-algebraic hypersurface (it is violated by any $\varphi_0$ whose
+Fourier mass sits on a frequency in the symmetric difference).
+There are finitely many pairs of shadow sequences on a finite window, so the exceptional set is a finite
+union of proper hypersurfaces.
+\end{proof}
+
+\begin{theorem}[Canonical trajectory-branching rate]
+\label{thm:branching-rate}
+For a generic probe in the sense of Lemma~\ref{lem:genericity}, the canonical O12-compatible D4 channel
+satisfies, on the pre-saturation window,
+\[
+\Ndist(n)=\Nb(n),
+\qquad
+\lim_{n\to\infty}\tfrac1n\log\Ndist(n)=\log(1+\sqrt2).
+\]
+\end{theorem}
+
+\begin{proof}
+$\Ndist(n)\le\Nb(n)$ by Theorem~\ref{thm:b-only}, and $\Ndist(n)\ge\Nb(n)$ by Lemma~\ref{lem:genericity}.
+The rate is Proposition~\ref{prop:pell}.
+\end{proof}
+
+\begin{remark}
+\label{rem:witness}
+The numerical campaign of Section~\ref{sec:numerics} verifies exact profile separation, at machine precision
+and without binning, on all sampled histories at $q=211$: the number of distinct profiles equals the number
+of distinct sampled $b$-sequences at every $n\le 12$ (Table~\ref{tab:pell}).
+This witnesses that the concrete seeded probe is generic; the lemma guarantees that this is not an accident
+of the seed.
+\end{remark}
+
+\section{Numerical Evidence}
+\label{sec:numerics}
+
+The campaign (script \texttt{trajectory\_branching.py}, simulation repository, directory
+\texttt{spectral/trajectory-entropy}) samples $T$ non-backtracking trajectories on $\Heis(\Zq)$ for
+$q\in\{29,61,101,211\}$ ($T=2\times10^4$ for $q\le101$, $T=10^5$ for $q=211$; three conjugate block pairs per
+prime; fixed reported seeds), and evaluates three channels on one shared path ensemble:
+V1, uniform probe with the O12 basis; V2, generic probe with the O12 basis (the canonical channel of
+Section~\ref{sec:canonical-channel}); V3, generic probe with a Gabor basis built from the same probe.
+Profiles are discretised with bin width $\epsilon\in\{0.1,0.05,0.02,0.01\}$ (with post-hoc refinement to
+$10^{-3}$ at $q=211$), and the entropy rate is estimated by collision (R\'enyi-2) entropy, bracketed below by
+the distinct-count of the accumulated scalar $I(n)=\sum_{k\le n}s_k$ and above by the per-step alphabet
+product capped at $\log 3$.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{trajectory_branching_h.pdf}
+\caption{Projective trajectory-branching entropy rates for $q=29,61,101,211$ (columns) and the three channels
+(rows).
+V1 is a collapse control.
+V2 is the canonical O12-compatible $b$-shadow channel; the dashed red line is the proved ceiling
+$\log(1+\sqrt2)$.
+V3 is the full-history Gabor channel and exhibits additional projective compression before finite-$q$
+saturation (dotted vertical lines; dashed black line $\log 3$).
+Shaded bands are the lower/upper estimator brackets; thin lines show the $\epsilon$ sweep.}
+\label{fig:trajectory-branching}
+\end{figure}
+
+\subsection{V1: collapse control}
+\label{sec:v1}
+
+The uniform O12 channel behaves exactly as Corollary~\ref{cor:uniform-collapse} predicts: symbols are binary,
+$\epsilon$-independent, and carry at most a weak residue of the $b$-shadow when the character span is not yet
+saturated (small $h\lesssim0.1$--$0.2$ at $q\ge101$, identically $0$ at $q\le61$ where all reachable
+characters are spanned early).
+
+\subsection{V2: canonical $b$-shadow channel}
+\label{sec:v2}
+
+At $q=211$ the O12 span never saturates on the window, and the refined estimate converges to the ceiling:
+$h_2(n)=0.885,0.881,0.877,\dots$ for $n\ge5$ at $\epsilon=10^{-3}$, against
+$\log(1+\sqrt2)=0.8814$.
+Table~\ref{tab:pell} shows the exact mechanism: profiles and $b$-sequences match one-to-one on the whole
+sample.
+The late-window deficit of the sampled distinct counts against $\Nb(n)$ is a pure coupon-collector effect
+once $\Nb(n)$ becomes comparable to $T$; the exact rate $\tfrac1n\log\Nb(n)$ approaches $\hb$ from above.
+
+\begin{table}[t]
+\centering
+\begin{tabular}{rrrr}
+\toprule
+$n$ & $\Nb(n)$ (exact) & distinct $b$-sequences (sampled) & distinct profiles (sampled) \\
+\midrule
+1 & 3 & 3 & 3 \\
+2 & 7 & 7 & 7 \\
+3 & 17 & 17 & 17 \\
+4 & 41 & 41 & 41 \\
+5 & 99 & 99 & 99 \\
+6 & 239 & 239 & 239 \\
+7 & 577 & 577 & 577 \\
+8 & 1393 & 1393 & 1393 \\
+9 & 3363 & 3363 & 3363 \\
+10 & 8119 & 8096 & 8096 \\
+11 & 19601 & 18675 & 18675 \\
+12 & 47321 & 37394 & 37394 \\
+\bottomrule
+\end{tabular}
+\caption{Exact Pell count against sampled counts at $q=211$, $T=10^5$, canonical channel, machine precision
+(no binning).
+Profiles separate the sampled $b$-sequences exactly at every depth; the deficit for $n\ge10$ is sampling
+incompleteness, not profile merging.}
+\label{tab:pell}
+\end{table}
+
+\subsection{V3: full-history compression channel}
+\label{sec:v3}
+
+The Gabor channel replaces the O12 span by the span of $\{\rho_c(u)\varphi_0 : u\in B_j\}$, deduplicated by
+$(a,b)$.
+Its rank grows deterministically as the abelian disk count $2k^2+2k+1$ at every shell and for every block and
+character tested, saturating at $k\simeq\sqrt{q/2}$; this matches the full-spark behaviour of generic Gabor
+systems in prime dimension~\cite{Lawrence2005,Malikiosis2015}.
+Because the basis is not Fourier-aligned, the residual depends on $(a_k,b_k)$, and the $(a,b)$-sequence
+determines the whole word: the ceiling is the full $\log 3$.
+The measured rate transiently reaches $0.90$--$0.96$ at $n=3$--$4$ ($q=211$, $\epsilon=10^{-3}$), then
+decreases while the upper bracket stays near $\log 3$: profiles genuinely merge.
+This is authentic projective compression of the full history, not a resolution artefact.
+V3 is not used as a canonical result; it is retained as the natural proxy for full-history projective
+compression and as the possible carrier of an evolving effective equation of state.
+
+\section{Cosmological Interpretation}
+\label{sec:cosmology}
+
+\subsection{The corrected transfer from LPS to Heisenberg}
+\label{sec:transfer}
+
+The transfer from LPS to Heisenberg changes the location of exponential growth: it is absent from endpoint
+volumes and present in projectively distinguishable histories.
+
+\begin{enumerate}
+\item Heisenberg endpoint volume is polynomial (Proposition~\ref{prop:endpoint-obstruction}), so endpoint
+counting cannot drive acceleration.
+\item Non-backtracking histories grow exponentially even on polynomial-growth groups: the redundancy
+$3^n/n^4$ is structural.
+\item Endpoint-based history compression collapses to the Bass--Guivarc'h no-go
+(Corollary~\ref{cor:endpoint-nogo}).
+\item Projective D4 distinguishability escapes the endpoint no-go, and the canonical O12-compatible channel
+gives Pell growth with $\hb=\log(1+\sqrt2)$ (Theorem~\ref{thm:branching-rate}).
+\item The full-history channel adds a compression profile before finite-$q$ saturation, candidate for an
+evolving effective equation of state (Section~\ref{sec:v3}).
+\end{enumerate}
+
+\subsection{Relation to the de Sitter limit}
+\label{sec:desitter}
+
+The projective de Sitter reading is not that matter sources a negative-pressure substance.
+It is that the admissible projection process carries a positive distinguishable-history entropy rate, so the
+number of admissible reprojection histories grows exponentially independently of any material content ---
+the structural analogue of expansion as a property of the dynamics itself rather than of a
+source term~\cite{deSitter1917}.
+In this reading, the de Sitter-like component is the asymptotic rate of projective history branching, and
+the early window ($n\le2$, where profiles are still projectively degenerate) reproduces the decelerated
+regime of the two-regime model of~\cite{Beau2026a5} before the branching regime takes over.
+
+\subsection{Status of the equation of state}
+\label{sec:eos}
+
+The canonical $b$-shadow rate is rigid: it is a substrate-combinatorial constant, independent of $q$ and of
+the spectral data, and therefore gives a clean positive asymptotic rate but not, by itself, an evolving
+equation of state.
+The evolving component, if present, must come from full-history compression, represented here by V3, whose
+cosmological use remains conditional on a canonical identification of the full-history projective
+observable.
+Any confrontation with evolving-dark-energy indications~\cite{DESI2024} therefore belongs to the cosmological
+branch~\cite{Beau2026d} and only after that identification; it is not claimed here.
+
+\section{Neighbouring Theory}
+\label{sec:neighbouring}
+
+\subsection{Non-backtracking entropy and Ihara zeta}
+The Pell count is adjacent to non-backtracking path combinatorics as organised by the Ihara zeta
+function~\cite{Ihara1966}.
+The relevant object here is not the growth of closed geodesics or of the group, but the growth of
+non-backtracking words modulo a projection channel; the transfer-matrix mechanics are the same, the quotient
+is new.
+
+\subsection{Growth of groups}
+The endpoint obstruction is a direct consequence of polynomial growth of nilpotent
+groups~\cite{Bass1972,Guivarch1973}.
+The result does not conflict with Bass--Guivarc'h theory; it exploits precisely the separation between
+endpoint growth and path growth.
+
+\subsection{Finite Gabor systems}
+The full-history channel is a finite Weyl--Heisenberg (Gabor) system.
+The deterministic rank sequence $1,5,13,25,41,61,\dots,q$ observed at every shell matches the abelian disk
+count $2k^2+2k+1$, consistent with the generic linear independence of Gabor systems in prime
+dimension~\cite{Lawrence2005} and its extensions~\cite{Malikiosis2015}.
+
+\subsection{Causal sets and history counting}
+The reading ``growth is carried by histories rather than states'' is adjacent to causal-set and sum-over-
+histories intuitions~\cite{Bombelli1987}.
+The distinction is that the present framework counts histories only through projective distinguishability
+under a non-injective projection~\cite{Cosmochrony,Beau2026b}, not as independent ontological paths.
+
+\section{Status and Open Problems}
+\label{sec:status}
+
+\begin{itemize}
+\item Proved: Heisenberg endpoint growth is polynomial of degree $4$; endpoint-based distinguishability has
+zero exponential rate (Proposition~\ref{prop:endpoint-obstruction}, Corollary~\ref{cor:endpoint-nogo}).
+\item Proved: the O12 span is a Fourier coordinate subspace and the mono-path residual channel is $b$-only;
+the central charge is unconditionally erased from mono-path norms (Lemma~\ref{lem:character},
+Theorem~\ref{thm:b-only}, Corollary~\ref{cor:uniform-collapse}).
+\item Proved: the $b$-shadow count is the Pell count with rate $\log(1+\sqrt2)$
+(Proposition~\ref{prop:pell}), and profile separation holds for every probe outside a finite union of proper
+hypersurfaces (Lemma~\ref{lem:genericity}), giving $\Ndist=\Nb$ generically
+(Theorem~\ref{thm:branching-rate}).
+\item Verified: exact profile separation on all sampled histories at $q=211$, machine precision, no binning
+(Table~\ref{tab:pell}); ceiling convergence of the measured rate at $\epsilon\to0$.
+\item Measured, open interpretation: the V3 full-history compression profile before saturation.
+\item Open: canonical status of the full-history projective observable.
+\item Open: extraction of an evolving $w(n)$ from projective compression.
+\item Open: integration into the cosmological branch as a status paragraph and citation, after the above.
+\end{itemize}
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+The Heisenberg transition does not kill the cosmological branching mechanism; it relocates it.
+The endpoint space has polynomial growth, but the projectively distinguishable history space retains a
+positive entropy rate.
+For the canonical O12-compatible residual channel this rate is pinned exactly:
+\[
+\Ndist(n)=\Nb(n)=2\Nb(n-1)+\Nb(n-2),
+\qquad
+\hb=\log(1+\sqrt2),
+\]
+proved for a generic probe and witnessed exactly on the sampled multi-prime campaign.
+This supplies the structural bridge from the spectral admissibility cascade to a de Sitter-like asymptotic
+component independent of matter content.
+The full-history compression profile remains the open candidate mechanism for an evolving effective equation
+of state.
+
+\section*{Acknowledgements}
+Portions of the development of this note benefited from iterative interactions with large language models
+used as analytical assistants.
+The theoretical results and their interpretation remain the author's responsibility.
+
+\clearpage
+\bibliographystyle{plain}
+\bibliography{cosmochrony-bibliography,external-refs}
+
+\end{document}
