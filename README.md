@@ -11,11 +11,19 @@ erased from mono-path norms), and pins the canonical branching rate exactly: the
 count is the Pell count N(n) = 2N(n-1) + N(n-2), with asymptotic rate h_b = log(1+sqrt(2)).
 Profile separation is proved for a generic probe (finite union of proper hypersurfaces) and witnessed exactly
 on the sampled multi-prime campaign (q in {29, 61, 101, 211}).
-The full-history Gabor channel shows additional projective compression and is retained as the open candidate
-for an evolving effective equation of state.
+The full-history Gabor channel (V3) is itself a theorem since v1.1.0: the Gabor span exhausts the abelian
+l1 disk shell by shell, so nonzero symbols are confined to l1-outward geodesics (geodesic death: one inward
+step erases the profile permanently), and for a generic probe (Lawrence-Pfander-Walnut full spark plus a
+Chebotarev-based separation lemma) the distinguishable-history count is bracketed by
+2^n <= N(n) <= 2^(n+2): the channel has positive and exactly pinned symbolic entropy log 2, strictly below
+the canonical rate log(1+sqrt(2)).
+The exact class count N = (N_class+2)/2 is verified exhaustively at q in {101, 211} and kept at
+verified/conjectural status.
+The finite-n compression profile is retained as the candidate input for an evolving effective equation of
+state (interpretive, deferred to the cosmological branch).
 
-Central result channel: V2 (generic probe, O12 basis).
-Open front: V3 (full-history Gabor channel), not used as a canonical cosmological mechanism.
+Central result channel: V2 (generic probe, O12 basis), rate log(1+sqrt(2)).
+Full-history channel: V3 (Gabor basis), proved strictly compressive, rate log 2.
 
 ## Build
 
@@ -28,7 +36,11 @@ bash compile.sh
 
 Script and data: `simulation/spectral/trajectory-entropy/trajectory_branching.py` (same workspace),
 outputs in `traj_outputs/` (q{q}_traj.npz, trajectory_branching_h.pdf).
+Exhaustive verification of the V3 theorem (all non-backtracking words, machine precision):
+`simulation/spectral/trajectory-entropy/v3_exact_check.py`.
 
 ## Status
 
-Draft; not yet deposited.
+Deposited on Zenodo, concept DOI [10.5281/zenodo.21197757](https://doi.org/10.5281/zenodo.21197757)
+(latest version 1.1.0: full-history channel theorem, exact compression rate log 2).
+Web page: https://cosmochrony.org/science/cosmology/trajectory-branching/
