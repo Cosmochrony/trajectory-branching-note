@@ -14,11 +14,13 @@ on the sampled multi-prime campaign (q in {29, 61, 101, 211}).
 The full-history Gabor channel (V3) is itself a theorem since v1.1.0: the Gabor span exhausts the abelian
 l1 disk shell by shell, so nonzero symbols are confined to l1-outward geodesics (geodesic death: one inward
 step erases the profile permanently), and for a generic probe (Lawrence-Pfander-Walnut full spark plus a
-Chebotarev-based separation lemma) the distinguishable-history count is bracketed by
-2^n <= N(n) <= 2^(n+2): the channel has positive and exactly pinned symbolic entropy log 2, strictly below
-the canonical rate log(1+sqrt(2)).
-The exact class count N = (N_class+2)/2 is verified exhaustively at q in {101, 211} and kept at
-verified/conjectural status.
+Chebotarev-based separation lemma) the distinguishable-history count is exact: since v1.2.0,
+N(n) = (N_class+2)/2 = 2^(n+2) - 4n - 1 is a theorem on the window q > (4n-1)(2n+3), n >= 2.
+The last separation step (a-mirror pairs at equal |b|) is closed by proving generic non-vanishing of a
+mixed two-anchor coefficient -- a Hermitian jet at the orthogonal point of an anchor moment domain --
+combined with a Klein rigidity property of outward geodesics; the channel has positive and exactly pinned
+symbolic entropy log 2, strictly below the canonical rate log(1+sqrt(2)).
+The count is witnessed exhaustively at q in {101, 211}.
 The finite-n compression profile is retained as the candidate input for an evolving effective equation of
 state (interpretive, deferred to the cosmological branch).
 
@@ -38,9 +40,11 @@ Script and data: `simulation/spectral/trajectory-entropy/trajectory_branching.py
 outputs in `traj_outputs/` (q{q}_traj.npz, trajectory_branching_h.pdf).
 Exhaustive verification of the V3 theorem (all non-backtracking words, machine precision):
 `simulation/spectral/trajectory-entropy/v3_exact_check.py`.
+Certification of the mixed two-anchor coefficient (eps^2 identity, moment reduction, Hermitian jets):
+`simulation/spectral/trajectory-entropy/amirror_mixed_coeff.py` and `amirror_jet_certify.py`.
 
 ## Status
 
 Deposited on Zenodo, concept DOI [10.5281/zenodo.21197757](https://doi.org/10.5281/zenodo.21197757)
-(latest version 1.1.0: full-history channel theorem, exact compression rate log 2).
+(latest version 1.2.0: exact full-history class count 2^(n+2) - 4n - 1, generic a-mirror separation).
 Web page: https://cosmochrony.org/science/cosmology/trajectory-branching/

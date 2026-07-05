@@ -696,7 +696,7 @@ which holds iff distinct outward prefixes always produce distinct profiles modul
 This closed form is verified exhaustively --- all $4\cdot3^{n-1}$ non-backtracking words, no sampling,
 machine precision, no binning --- at $q=101$ and $q=211$ for $2\le n\le7$ (Table~\ref{tab:v3-count}), and
 it is consistent with the sampled $q=211$ campaign of Section~\ref{sec:v3}.
-The closed form is proved in Section~\ref{sec:amirror} (Theorem~\ref{thm:v3-exact-class-count}): the
+The closed form is proved in Section~\ref{sec:v3-count-theorem} (Theorem~\ref{thm:v3-exact-class-count}): the
 missing ingredient is generic separation of $a$-mirror pairs at equal $|b|$, which the witness family of
 Lemma~\ref{lem:b-level-separation} cannot see, and which is supplied by the mixed two-anchor coefficient.
 At $n=1$ the count is $2$ rather than $(\Nclass(1)+2)/2=3$: the frozen span at $k=1$ is the line
@@ -1111,9 +1111,9 @@ the spectral data, and therefore gives a clean positive asymptotic rate but not,
 equation of state.
 The evolving component, if present, must come from full-history compression, represented here by V3.
 Its asymptotic rate is now pinned analytically ($\log 2$, Theorem~\ref{thm:v3-rate}) and its finite-$n$
-count is bracketed in closed form, so the candidate is analytic rather than purely numerical; its
-cosmological use remains conditional on a canonical identification of the full-history projective
-observable.
+count is exact on the generic pre-saturation window (Theorem~\ref{thm:v3-exact-class-count}), so the
+candidate is analytic rather than purely numerical; its cosmological use remains conditional on a canonical
+identification of the full-history projective observable.
 Any confrontation with evolving-dark-energy indications~\cite{DESI2024} therefore belongs to the cosmological
 branch~\cite{Beau2026d} and only after that identification; it is not claimed here.
 
@@ -1175,6 +1175,7 @@ $q>(4n-1)(2n+3)$, $n\ge2$: the mixed two-anchor coefficient is generically nonze
 (Theorem~\ref{thm:v3-exact-class-count}); witnessed exhaustively at $q\in\{101,211\}$
 (Table~\ref{tab:v3-count}).
 \item Open: canonical status of the full-history projective observable.
+\item Open: dictionary between shell rank, projective depth, and effective cosmological time.
 \item Open: extraction of an evolving $w(n)$ from projective compression, now with the analytic finite-$n$
 profile of Section~\ref{sec:fullhistory} as input.
 \item Open: integration into the cosmological branch as a status paragraph and citation, after the above.
