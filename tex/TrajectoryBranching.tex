@@ -59,13 +59,17 @@ The equality is witnessed exactly on the sampled histories of a multi-prime camp
 of proper real-algebraic hypersurfaces.
 The full-history Gabor channel is strictly compressive: a geodesic-death mechanism confines nonzero symbols
 to trajectories whose abelian shadow is an outward geodesic, and for a generic probe its
-distinguishable-history count is bracketed between $2^n$ and $2^{n+2}$ on the pre-saturation window, so the
-channel has positive and exactly pinned symbolic entropy $\log 2$, strictly below the canonical rate.
+distinguishable-history count is exactly $2^{n+2}-4n-1$ on the pre-saturation window, so the channel has
+positive and exactly pinned symbolic entropy $\log 2$, strictly below the canonical rate.
+The last separation step behind the exact count --- mirror pairs at equal $|b|$ --- is closed by proving
+the generic non-vanishing of a mixed two-anchor coefficient, through a Hermitian jet at the orthogonal
+point of an anchor moment domain.
 Its finite-horizon compression profile is retained as the candidate input for an evolving effective equation
 of state.
-The cosmological conclusion is structural: accelerated expansion, if inherited by the cosmological branch,
-is not driven by exponential growth of Heisenberg states but by exponential branching of projectively
-distinguishable histories.
+Structural reading (interpretation, not a derived result): accelerated expansion, if inherited by the
+cosmological branch, is not driven by exponential growth of Heisenberg states but by exponential branching
+of projectively distinguishable histories, and the branching skeleton of that history space is now an
+exactly enumerated combinatorial object.
 \end{abstract}
 
 \medskip
@@ -692,9 +696,9 @@ which holds iff distinct outward prefixes always produce distinct profiles modul
 This closed form is verified exhaustively --- all $4\cdot3^{n-1}$ non-backtracking words, no sampling,
 machine precision, no binning --- at $q=101$ and $q=211$ for $2\le n\le7$ (Table~\ref{tab:v3-count}), and
 it is consistent with the sampled $q=211$ campaign of Section~\ref{sec:v3}.
-Its status is verified/conjectural: the missing step is generic separation of $a$-mirror pairs at equal
-$|b|$, which the witness family of Lemma~\ref{lem:b-level-separation} cannot see; this has no impact on the
-rate, which is pinned by the theorem.
+The closed form is proved in Section~\ref{sec:amirror} (Theorem~\ref{thm:v3-exact-class-count}): the
+missing ingredient is generic separation of $a$-mirror pairs at equal $|b|$, which the witness family of
+Lemma~\ref{lem:b-level-separation} cannot see, and which is supplied by the mixed two-anchor coefficient.
 At $n=1$ the count is $2$ rather than $(\Nclass(1)+2)/2=3$: the frozen span at $k=1$ is the line
 $\mathbb{C}\varphi_0$ and $|\langle\rho(z)\varphi_0,\varphi_0\rangle|=
 |\langle\rho(z)^{-1}\varphi_0,\varphi_0\rangle|$, so the two $X^{\pm}$ classes also merge there.
@@ -983,10 +987,86 @@ orthogonal point, and the closed-form Hermitian jets (scripts \texttt{amirror\_m
 \texttt{spectral/trajectory-entropy}).
 \end{remark}
 
-Theorem~\ref{thm:generic-nonvanishing-mixed-coefficient} closes the analytic half of the exact
-count: what remains is combinatorial, namely propagating per-pair separation at the first step
-where the $a$-coordinate is nonzero through the class structure of
-Proposition~\ref{prop:class-bound}.
+\subsection{The exact class count as a theorem}
+\label{sec:v3-count-theorem}
+
+Theorem~\ref{thm:generic-nonvanishing-mixed-coefficient} closes the analytic half of the exact count; the
+remaining half is combinatorial, and rests on a rigidity property of outward geodesics.
+
+\begin{lemma}[Separation of quotient classes]
+\label{lem:v3-quotient-class-separation}
+Let $q$ be prime and $n\ge2$ with $q>(4n-1)(2n+3)$.
+Outside a finite union of proper real-algebraic hypersurfaces in probe space, two full-history classes of
+Proposition~\ref{prop:class-bound} have the same V3 profile up to depth $n$ if and only if they are
+identified by the $b$-mirror involution of Lemma~\ref{lem:b-mirror}.
+\end{lemma}
+
+\begin{proof}
+First, $q>(4n-1)(2n+3)$ implies $4n^2\le q$, so Lemmas~\ref{lem:alive-positivity}
+and~\ref{lem:b-level-separation} apply on the whole horizon.
+A profile is determined by the outward prefix up to the first inward step
+(Proposition~\ref{prop:class-bound}), so classes are outward prefixes: of length $n$ for alive classes,
+with a marked death step $d\le n$ and length $d-1$ for dead ones.
+If one class is alive at a step $d$ at which the other is dead, Lemma~\ref{lem:alive-positivity} separates
+the profiles there ($s_d>0$ against $s_d=0$); two dead classes with distinct death steps are separated at
+the earlier one.
+It therefore suffices to separate two distinct outward prefixes over a common horizon $h\ge2$, with $h=n$
+for alive classes and $h=d-1\ge2$ for a common death step $d$.
+If $|b_k|\neq|b'_k|$ at some $k\le h$, Lemma~\ref{lem:b-level-separation} separates the profiles at the
+first such $k$.
+Otherwise $|b_k|=|b'_k|$, hence $|a_k|=|a'_k|$, for every $k\le h$.
+Along an outward geodesic every step increases $|a|$ or $|b|$ by one, so $|a_k|$ and $|b_k|$ are
+non-decreasing, a coordinate never returns to zero once it has left it, and its sign is the sign of its
+first step.
+The unsigned sequences $(|a_k|,|b_k|)_{k\le h}$ therefore determine the prefix up to the two global signs:
+the two prefixes agree up to the Klein group generated by the $a$-mirror and the $b$-mirror.
+Modulo the forced $b$-mirror the only nontrivial case is the pointwise $a$-mirror, $z'_k=(-a_k,b_k)$ for
+all $k$, and the two classes are distinct precisely when the prefix contains an $a$-step.
+In that case $a_h\neq0$ (dead prefixes are non-axis, so they contain an $a$-step and $a_{d-1}\neq0$), the
+points $(a_h,b_h)$ and $(-a_h,b_h)$ form a frontier pair with nonzero $a$-coordinate, and
+Theorem~\ref{thm:generic-nonvanishing-mixed-coefficient}, applied at step $k=h$ (its window
+$q>(4h-1)(2h+3)$ is implied), confines their fusion to a proper real-algebraic subset: outside it the two
+profiles differ at step $h$.
+There are finitely many class pairs and steps, so the union of all exceptional sets remains a finite union
+of proper real-algebraic hypersurfaces.
+\end{proof}
+
+\begin{theorem}[Exact full-history class count]
+\label{thm:v3-exact-class-count}
+Let $q$ be prime and $n\ge2$ with $q>(4n-1)(2n+3)$.
+For every probe outside a finite union of proper real-algebraic hypersurfaces,
+\[
+\NdistV(n)
+\;=\;
+\frac{\Nclass(n)+2}{2}
+\;=\;
+2^{\,n+2}-4n-1 .
+\]
+\end{theorem}
+
+\begin{proof}
+Proposition~\ref{prop:class-bound} gives $\NdistV(n)\le(\Nclass(n)+2)/2$, the factor two being the forced
+$b$-mirror identification, whose only fixed classes are the two pure $X^{\pm}$ classes.
+Lemma~\ref{lem:v3-quotient-class-separation} gives the reverse inequality generically: after quotienting by
+the $b$-mirror, no two distinct classes share a profile.
+The closed form follows from $A(m)=2^{m+2}-4$:
+\[
+\Nclass(n)=A(n)+\sum_{d=3}^{n}\bigl(A(d-1)-4\bigr)=2^{\,n+3}-8n-4,
+\qquad
+\frac{\Nclass(n)+2}{2}=2^{\,n+2}-4n-1 .
+\]
+\end{proof}
+
+\begin{corollary}[Exact symbolic entropy from the exact count]
+\label{cor:v3-exact-symbolic-entropy}
+Under the hypotheses of Theorem~\ref{thm:v3-exact-class-count},
+$\tfrac1n\log\NdistV(n)\to\log2$ along every prime family with $q>(4n-1)(2n+3)$: the rate of
+Theorem~\ref{thm:v3-rate} is recovered with the exact count in place of the bracket.
+\end{corollary}
+
+At $n=1$ the count remains $2$ rather than $(\Nclass(1)+2)/2=3$, as noted in
+Section~\ref{sec:v3-count}: the two $X^{\pm}$ classes merge exactly at the first step, so the theorem
+starts at $n=2$.
 
 \section{Cosmological Interpretation}
 \label{sec:cosmology}
@@ -1088,9 +1168,12 @@ hypersurfaces (Lemma~\ref{lem:genericity}), giving $\Ndist=\Nb$ generically
 (Lemma~\ref{lem:geodesic-death}); for a generic probe on the window $4n^2\le q$ its
 distinguishable-history count satisfies $2^n\le\NdistV(n)\le2^{n+2}$, pinning its rate at $\log 2$,
 strictly below the canonical rate (Theorem~\ref{thm:v3-rate}, Corollary~\ref{cor:strict-compression}).
-\item Verified, conjectural closed form: $\NdistV(n)=(\Nclass(n)+2)/2$, witnessed exhaustively at
-$q\in\{101,211\}$ (Table~\ref{tab:v3-count}); the missing step is generic separation of $a$-mirror pairs
-at equal $|b|$, with no impact on the rate.
+\item Proved: the exact full-history class count $\NdistV(n)=(\Nclass(n)+2)/2=2^{n+2}-4n-1$ on the window
+$q>(4n-1)(2n+3)$, $n\ge2$: the mixed two-anchor coefficient is generically nonzero
+(Theorem~\ref{thm:generic-nonvanishing-mixed-coefficient}), quotient classes separate
+(Lemma~\ref{lem:v3-quotient-class-separation}), and the closed form follows
+(Theorem~\ref{thm:v3-exact-class-count}); witnessed exhaustively at $q\in\{101,211\}$
+(Table~\ref{tab:v3-count}).
 \item Open: canonical status of the full-history projective observable.
 \item Open: extraction of an evolving $w(n)$ from projective compression, now with the analytic finite-$n$
 profile of Section~\ref{sec:fullhistory} as input.
@@ -1112,11 +1195,27 @@ For the canonical O12-compatible residual channel this rate is pinned exactly:
 proved for a generic probe and witnessed exactly on the sampled multi-prime campaign.
 This supplies the structural bridge from the spectral admissibility cascade to a de Sitter-like asymptotic
 component independent of matter content.
-The full-history channel is now itself analytic: geodesic death pins its symbolic entropy at $\log 2$,
-strictly below the canonical rate, so projective compression of the full history has a proved rate rather
-than only a measured profile.
+The full-history channel is now itself analytic and exactly counted: geodesic death pins its symbolic
+entropy at $\log 2$, strictly below the canonical rate, and the class count is the theorem
+$\NdistV(n)=2^{n+2}-4n-1$ --- the $b$-mirror is the only generic degeneracy of the projective history
+record, the $a$-mirror being broken by the mixed two-anchor coefficient.
 Its finite-$n$ compression profile remains the candidate mechanism for an evolving effective equation of
 state; that reading stays interpretive and is deferred to the cosmological branch.
+
+\subsection*{Interpretive outlook}
+The following reading is interpretive: a structural interpretation of the proved statements above, not
+itself a derived result.
+Within the programme, this note says that what grows exponentially is not the set of states of the
+substrate --- endpoint growth is polynomial --- but the set of histories that the non-injective projection
+can distinguish: accelerated expansion, if inherited by the cosmological branch, is a property of the
+projective record, available over a polynomially growing state space and independent of matter content.
+The exact class count sharpens the reading: the branching skeleton of the distinguishable-history space is
+completely explicit --- outward geodesic prefixes, identified only under one exact mirror symmetry --- so
+the de Sitter-like component rests on an enumerable combinatorial object rather than on an asymptotic
+estimate, and any future cosmological use inherits a discrete, falsifiable signature.
+A third party should situate the claim as conditional on two open steps stated in
+Section~\ref{sec:status}: the dictionary between shell rank and cosmic time, and the transfer of the
+admissibility cascade to the cosmological branch.
 
 \section*{Acknowledgements}
 Portions of the development of this note benefited from iterative interactions with large language models
