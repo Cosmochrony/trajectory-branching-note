@@ -24,6 +24,8 @@
 \newcommand{\Ndist}{N_{\mathrm{dist}}}
 \newcommand{\Nb}{N_b}
 \newcommand{\hb}{h_b}
+\newcommand{\NdistV}{N^{\mathrm{V3}}_{\mathrm{dist}}}
+\newcommand{\Nclass}{N_{\mathrm{class}}}
 
 \title{Projective Trajectory Branching and the de Sitter Limit}
 \author{J\'er\^ome Beau}
@@ -55,8 +57,12 @@ Consequently, the distinguishable-history count is the Pell count
 The equality is witnessed exactly on the sampled histories of a multi-prime campaign
 ($q\in\{29,61,101,211\}$) and the genericity condition on the probe is proved to fail only on a finite union
 of proper real-algebraic hypersurfaces.
-The full-history Gabor channel displays additional projective compression and is retained as the open
-candidate for an evolving effective equation of state.
+The full-history Gabor channel is strictly compressive: a geodesic-death mechanism confines nonzero symbols
+to trajectories whose abelian shadow is an outward geodesic, and for a generic probe its
+distinguishable-history count is bracketed between $2^n$ and $2^{n+2}$ on the pre-saturation window, so the
+channel has positive and exactly pinned symbolic entropy $\log 2$, strictly below the canonical rate.
+Its finite-horizon compression profile is retained as the candidate input for an evolving effective equation
+of state.
 The cosmological conclusion is structural: accelerated expansion, if inherited by the cosmological branch,
 is not driven by exponential growth of Heisenberg states but by exponential branching of projectively
 distinguishable histories.
@@ -64,7 +70,8 @@ distinguishable histories.
 
 \medskip
 \noindent\textbf{Keywords:} non-injective projection; Heisenberg group; spectral admissibility;
-trajectory branching; projection entropy; de Sitter expansion; Pell numbers; dark energy.
+trajectory branching; projection entropy; de Sitter expansion; Pell numbers; full-spark Gabor systems;
+dark energy.
 
 \newpage
 \tableofcontents
@@ -89,8 +96,8 @@ counting endpoints.
 The only possible surviving exponential component must live in the redundancy of histories over endpoints.
 
 This note isolates that component, proves where it can and cannot reside, pins its rate in the canonical
-channel, and states precisely what is and is not established for the cosmological
-branch~\cite{Beau2026d,Cosmochrony}.
+channel and in the full-history channel, and states precisely what is and is not established for the
+cosmological branch~\cite{Beau2026d,Cosmochrony}.
 
 \section{Endpoint Growth and the Heisenberg Obstruction}
 \label{sec:endpoint}
@@ -418,15 +425,302 @@ incompleteness, not profile merging.}
 The Gabor channel replaces the O12 span by the span of $\{\rho_c(u)\varphi_0 : u\in B_j\}$, deduplicated by
 $(a,b)$.
 Its rank grows deterministically as the abelian disk count $2k^2+2k+1$ at every shell and for every block and
-character tested, saturating at $k\simeq\sqrt{q/2}$; this matches the full-spark behaviour of generic Gabor
-systems in prime dimension~\cite{Lawrence2005,Malikiosis2015}.
-Because the basis is not Fourier-aligned, the residual depends on $(a_k,b_k)$, and the $(a,b)$-sequence
-determines the whole word: the ceiling is the full $\log 3$.
+character tested, saturating at $k\simeq\sqrt{q/2}$; this is a corollary of the full-spark property of
+generic Gabor systems in prime dimension~\cite{Lawrence2005,Malikiosis2015} (Corollary~\ref{cor:gabor-rank}).
+Because the basis is not Fourier-aligned, the residual depends on $(a_k,b_k)$; the trivial ceiling is the
+word entropy $\log 3$, but the sharp ceiling is $\log 2$ (Proposition~\ref{prop:class-bound}).
 The measured rate transiently reaches $0.90$--$0.96$ at $n=3$--$4$ ($q=211$, $\epsilon=10^{-3}$), then
-decreases while the upper bracket stays near $\log 3$: profiles genuinely merge.
+decreases: profiles genuinely merge, and Section~\ref{sec:fullhistory} identifies the mechanism --- geodesic
+death --- and pins the asymptotic rate at $\log 2$.
 This is authentic projective compression of the full history, not a resolution artefact.
-V3 is not used as a canonical result; it is retained as the natural proxy for full-history projective
-compression and as the possible carrier of an evolving effective equation of state.
+V3 is not used as the canonical channel; its proved compression rate and finite-$n$ profile are retained as
+the natural proxy for full-history projective compression and as the possible carrier of an evolving
+effective equation of state (Section~\ref{sec:eos}).
+
+\section{The Full-History Channel: Exact Compression Rate}
+\label{sec:fullhistory}
+
+This section upgrades the full-history channel V3 of Section~\ref{sec:v3} from a measured compression profile
+to an analytic mechanism.
+The carrier of the result is a geometric one: the Gabor span exhausts the abelian $\ell^1$ disk shell by
+shell, so a trajectory keeps a nonzero symbol exactly as long as its abelian shadow is an $\ell^1$-outward
+geodesic, and a single inward step erases the symbol permanently.
+The consequence is that the sharp ceiling of the channel is not the word entropy $\log 3$ but $\log 2$, and
+that for a generic probe this value is attained: the full-history channel has positive and exactly pinned
+symbolic entropy.
+The rate is a property of this ball-synchronised Gabor exhaustion, not of the word source.
+
+Throughout, trajectories are identified with their abelian shadows $z_k=(a_k,b_k)\in\mathbb{Z}^2$ taken as
+integer points (no wrap: all windows below satisfy $n<q/2$), $|z|_1=|a|+|b|$, and
+$D_j=\{(a,b):|a|+|b|\le j\}$ denotes the $\ell^1$ disk, $|D_j|=2j^2+2j+1$.
+The V3 symbol of a trajectory at step $k$ is $s_k=r^{(c)}_k\,r^{(q-c)}_k$, where $r^{(c)}_k$ is the residual
+norm of $\rho_c(u_k)\varphi_0$ against the Gabor span frozen at the end of shell $k-1$
+(Section~\ref{sec:numerics}).
+
+\subsection{Disk structure and geodesic death}
+\label{sec:disk-death}
+
+\begin{lemma}[Disk span]
+\label{lem:disk-span}
+For any probe $\varphi_0$ and any character $c\neq0$, the Gabor span frozen at the end of shell $j$ equals
+\[
+G_j \;=\; \mathrm{span}\{\rho_c(a,b,0)\,\varphi_0 : (a,b)\in D_j\}.
+\]
+\end{lemma}
+
+\begin{proof}
+The abelian projection of a length-$\ell$ word has $\ell^1$ norm at most $\ell$, and conversely every
+$(a,b)$ with $|a|+|b|\le j$ is the abelian image of a straight word of length $|a|+|b|\le j$, so the
+$(a,b)$-deduplicated ball $B_j$ projects exactly onto $D_j$.
+The central coordinate contributes only the global phase $\rho_c(a,b,\gamma)=\psi_c(\gamma)\rho_c(a,b,0)$,
+which does not affect spans.
+\end{proof}
+
+\begin{corollary}[Deterministic rank sequence]
+\label{cor:gabor-rank}
+Since $\rho_c(a,b,0)$ is a global phase times $M^{cb}T^{a}$, the family
+$\{\rho_c(a,b,0)\varphi_0\}_{(a,b)\in\Zq^2}$ is the standard finite Gabor system up to a relabelling of
+indices.
+For $q$ prime and $\varphi_0$ in the dense open full-measure set of~\cite{Lawrence2005}, every subset of at
+most $q$ of its members is linearly independent (the Haar property; see also~\cite{Malikiosis2015}), so
+\[
+\operatorname{rank} G_j=\min\bigl(|D_j|,q\bigr)=\min\bigl(2j^2+2j+1,\;q\bigr).
+\]
+This is the rank sequence $1,5,13,25,41,\dots$ measured deterministically at every shell in
+Section~\ref{sec:v3}.
+\end{corollary}
+
+\begin{lemma}[Geodesic death]
+\label{lem:geodesic-death}
+For every unit probe, both characters, and every trajectory:
+(i) if $|z_k|_1\le k-1$ then $s_k=0$ exactly;
+(ii) the deficit $k-|z_k|_1$ is nonnegative, even, and nondecreasing in $k$, so after the first step at
+which $|z_k|_1<k$ every subsequent symbol vanishes;
+(iii) the symbols up to step $m$ can all be nonzero only if the shadow is an $\ell^1$-outward geodesic,
+$|z_k|_1=k$ for all $k\le m$.
+\end{lemma}
+
+\begin{proof}
+(i) If $z_k\in D_{k-1}$ then $\rho_c(u_k)\varphi_0$ is a global phase times one of the vectors spanning
+$G_{k-1}$ (Lemma~\ref{lem:disk-span}), so both residual factors vanish identically.
+(ii) Each step changes $|z|_1$ by $\pm1$, so $|z_k|_1\equiv k \pmod 2$ and the deficit is even; if
+$|z_k|_1\le k-2$ then $|z_{k+1}|_1\le k-1$, so the deficit never decreases.
+(iii) is (i) and (ii) restated.
+\end{proof}
+
+\begin{proposition}[Outward geodesic count]
+\label{prop:outward-count}
+The number $A(m)$ of non-backtracking words of length $m\ge1$ whose shadow is an $\ell^1$-outward geodesic
+is
+\[
+A(m)=2^{m+2}-4 .
+\]
+\end{proposition}
+
+\begin{proof}
+An outward step never reverses the previous one, so outwardness already implies non-backtracking.
+An outward path stays in the closed quadrant fixed by its axis signs; from an interior point two steps are
+outward, from an on-axis point three (the axis step and both transverse steps), and once the path leaves the
+axis it never returns (both coordinates can only grow in absolute value).
+Conditioning on the number $i\ge0$ of axis steps after the first step,
+$A(m)=4\bigl(1+\sum_{i=0}^{m-2}2\cdot2^{m-2-i}\bigr)=2^{m+2}-4$.
+\end{proof}
+
+\subsection{The unconditional ceiling}
+\label{sec:v3-ceiling}
+
+\begin{lemma}[$b$-mirror identity]
+\label{lem:b-mirror}
+$\rho_{q-c}(a,b,0)=\rho_c(a,-b,0)$ identically on $\mathbb{C}^q$, since $\psi_{q-c}(t)=\psi_c(-t)$.
+Consequently the two frozen spans coincide, $G^{(q-c)}_j=G^{(c)}_j$ ($D_j$ is symmetric under
+$b\mapsto-b$), the residual factors satisfy $r^{(q-c)}(a,b)=r^{(c)}(a,-b)$, and the pair symbol obeys
+\[
+s_k(a,b)=r^{(c)}_k(a,b)\;r^{(c)}_k(a,-b)=s_k(a,-b).
+\]
+Profiles are therefore invariant under the letterwise swap $Y\leftrightarrow Y^{-1}$, for every probe.
+\end{lemma}
+
+\begin{proposition}[Unconditional ceiling $\log 2$]
+\label{prop:class-bound}
+For every unit probe and every horizon $n\ge1$,
+\[
+\NdistV(n)\;\le\;\frac{\Nclass(n)+2}{2}\;\le\;2^{\,n+2},
+\qquad
+\Nclass(n)=A(n)+\sum_{d=3}^{n}\bigl(A(d-1)-4\bigr).
+\]
+\end{proposition}
+
+\begin{proof}
+The residual factors at step $k$ depend on the path only through $z_k$ (Lemma~\ref{lem:disk-span} and the
+global-phase argument), so by Lemma~\ref{lem:geodesic-death} a profile is determined by the outward prefix
+up to the first inward step: the death step carries symbol $0$ whichever inward generator realises it, and
+everything after it is $0$.
+An outward geodesic ending on an axis is a pure $X^{\pm}$ or $Y^{\pm}$ word, and its unique inward
+continuation is the backtracking step, which is forbidden; so death at step $d$ requires a non-axis outward
+prefix of length $d-1\ge2$, giving $A(d-1)-4$ dead classes for each $3\le d\le n$ and $A(n)$ alive classes.
+The involution of Lemma~\ref{lem:b-mirror} identifies these classes in pairs; a fixed class has $b\equiv0$
+along its prefix, hence is a pure $X^{\pm}$ class, and these are alive, so exactly $2$ classes are fixed.
+Finally $\Nclass(n)\le A(n)+\sum_{m=2}^{n-1}A(m)<2^{n+2}+2^{n+2}$, so
+$(\Nclass(n)+2)/2\le2^{\,n+2}$.
+\end{proof}
+
+\subsection{Generic separation and the rate theorem}
+\label{sec:v3-rate}
+
+\begin{lemma}[Alive positivity]
+\label{lem:alive-positivity}
+Let $q$ be prime, $\varphi_0$ in the full-spark set of~\cite{Lawrence2005}, and $n$ such that
+$|D_{n-1}|+1\le q$ and $n<q/2$.
+Then along every trajectory and for both characters, $|z_k|_1=k$ implies that both residual factors of
+$s_k$ are strictly positive, for all $k\le n$.
+\end{lemma}
+
+\begin{proof}
+The $|D_{k-1}|+1\le q$ vectors $\{\rho_c(w,0)\varphi_0:w\in D_{k-1}\}\cup\{\rho_c(z_k,0)\varphi_0\}$ carry
+pairwise distinct index pairs (no wrap for $n<q/2$), hence are linearly independent by the Haar property,
+and the residual of the last one against the span of the others is positive.
+The $q-c$ channel is the same system by Lemma~\ref{lem:b-mirror}.
+\end{proof}
+
+\begin{lemma}[Generic $|b|$-level separation]
+\label{lem:b-level-separation}
+Let $q$ be prime and $4n^2\le q$.
+Outside a finite union of proper real-algebraic hypersurfaces in probe space, the following holds for every
+$k\le n$: if $z\neq z'$ are frontier points at step $k$ (that is, $|z|_1=|z'|_1=k$) with
+$|b_z|\neq|b_{z'}|$, then $s_k(z)\neq s_k(z')$.
+\end{lemma}
+
+\begin{proof}
+Write $D=D_{k-1}$ and, for a channel $\chi\in\{c,q-c\}$ and a frontier point $w$, let
+$\Delta_\chi(w)=\det\operatorname{Gram}\{\rho_\chi(v,0)\varphi_0:v\in D\cup\{w\}\}$.
+On the open set where the two $D$-Grams are invertible, the squared residual is the Gram ratio
+$\Delta_\chi(w)/\Delta_\chi(D)$, so $s_k(z)=s_k(z')$ is equivalent there to the vanishing of the real
+polynomial
+\[
+\widetilde P \;=\; \Delta_c(z)\,\Delta_{q-c}(z)\;-\;\Delta_c(z')\,\Delta_{q-c}(z') .
+\]
+It suffices to prove $\widetilde P\not\equiv0$; the exceptional set is then contained in the zero set of
+$\widetilde P$ together with the two Gram-degeneracy hypersurfaces.
+
+Witness.
+Let $d=k-|b_z|$ and $d'=k-|b_{z'}|$ and assume without loss of generality $d>d'\ge0$; set $m=2d'+1\le2d-1$.
+Choose $s_j=c\,\sigma_j$ with $\sigma_j=(j-1)(2k-1)$ for $j=1,\dots,m$; since
+$m(2k-1)\le(2k-1)^2<4n^2\le q$, the frequency sheets $\{cb+s_j:|b|\le k-1\}$ are pairwise disjoint, and so
+are their $q-c$ counterparts.
+Take the singular window $\varphi_w=m^{-1/2}\sum_j e_{s_j}$.
+In Fourier coordinates, $\rho_c(a,b,0)\varphi_w$ is a global phase times $\mathrm{row}_b\otimes v_a$ with
+$v_a=m^{-1/2}(\zeta^{-as_1},\dots,\zeta^{-as_m})$, $\zeta=e^{2\pi i/q}$, so the span over $D$ splits into
+coordinate blocks indexed by $b$,
+\[
+\bigoplus_{|b|\le k-1}\ \mathrm{row}_b\otimes C_b,
+\qquad
+C_b=\mathrm{span}\{v_a : |a|\le k-1-|b|\}.
+\]
+Any $r\le m$ of the vectors $v_a$ with distinct $a$ are linearly independent, because
+$[\zeta^{-as_j}]$ is a minor of the prime-order DFT matrix, and such minors never vanish (Chebotar\"ev's
+theorem on roots of unity~\cite{EvansIsaacs1976}; it is also the engine of the full-spark
+theorem~\cite{Lawrence2005}).
+Hence $\dim C_b=\min(2(k-1-|b|)+1,\,m)$: the column of $z$ satisfies $2d-1\ge m$, so $C_{b_z}=\mathbb{C}^m$
+and $r^{(c)}(z)=0$, while the column of $z'$ contributes only $2d'-1<m$ vectors, so together with
+$v_{a_{z'}}$ they stay independent and $r^{(c)}(z')>0$ (for $d'=0$ the block of $z'$ is empty and the
+residual is full).
+By Lemma~\ref{lem:b-mirror} the same holds in the $q-c$ channel, so the witness gives $s_k(z)=0<s_k(z')$.
+
+Perturbation.
+At $\varphi_w$ the $D$-Grams are singular, so we evaluate $\widetilde P$ along $\varphi_t=\varphi_w+t\Psi$.
+If an affine family of $N\le q$ vectors has rank $r$ at $t=0$, then
+$\det\operatorname{Gram}=\|v_1(t)\wedge\dots\wedge v_N(t)\|^2=t^{2(N-r)}\bigl(c(\Psi)+O(t)\bigr)$ with
+$c(\Psi)$ the squared norm of a mixed wedge, nonzero for generic $\Psi$.
+At the witness, in each channel $\operatorname{rank}(D\cup z)=\operatorname{rank}(D)=:R$ while
+$\operatorname{rank}(D\cup z')=R+1$, so $\Delta_\chi(z)$ vanishes to order $2(|D|+1-R)$ and
+$\Delta_\chi(z')$ to order $2(|D|-R)$: the $z'$ product dominates by four orders, and for generic $\Psi$
+\[
+\widetilde P(\varphi_t)=-c_1(\Psi)c_2(\Psi)\,t^{\,4(|D|-R)}+O\bigl(t^{\,4(|D|-R)+1}\bigr)\neq0
+\]
+for all small $t\neq0$.
+Hence $\widetilde P\not\equiv0$.
+There are finitely many steps $k\le n$ and level pairs, so the union of the exceptional sets is a finite
+union of proper hypersurfaces.
+\end{proof}
+
+\begin{theorem}[Full-history rate]
+\label{thm:v3-rate}
+Let $q$ be prime, $4n^2\le q$, and let the probe avoid the finite union of the full-spark exceptional
+set~\cite{Lawrence2005} and the hypersurfaces of Lemma~\ref{lem:b-level-separation}
+(a dense open full-measure condition).
+Then
+\[
+2^{\,n}\;\le\;\NdistV(n)\;\le\;\frac{\Nclass(n)+2}{2}\;\le\;2^{\,n+2},
+\qquad\text{hence}\qquad
+\lim_{n\to\infty}\tfrac1n\log\NdistV(n)=\log 2
+\]
+along any family with $q\ge4n^2$.
+\end{theorem}
+
+\begin{proof}
+The upper bound is Proposition~\ref{prop:class-bound}.
+For the lower bound, map each pattern $\varepsilon\in\{0,1\}^n$ to the positive-quadrant staircase that
+takes $Y$ at step $k$ when $\varepsilon_k=1$ and $X$ otherwise; these are alive outward geodesics with
+$b_k=\sum_{i\le k}\varepsilon_i$.
+Two distinct patterns first differ at some step $k$, where the two staircases sit at frontier points with
+distinct $|b|$; by Lemma~\ref{lem:b-level-separation} their symbols at step $k$ differ, while their
+profiles agree before $k$, so the $2^n$ profiles are pairwise distinct.
+\end{proof}
+
+\begin{corollary}[Strict compression]
+\label{cor:strict-compression}
+On its admissible window the full-history channel carries positive and exactly pinned symbolic entropy,
+strictly below the canonical channel and the word source:
+\[
+0\;<\;h^{\mathrm{V3}}=\log 2\;<\;\log(1+\sqrt2)=\hb\;<\;\log 3 .
+\]
+Projective compression of the full history is therefore no longer only observed
+(Section~\ref{sec:v3}); it has an analytic rate, and the finer Gabor resolution strictly lowers the
+distinguishable-history entropy relative to the canonical $b$-shadow channel.
+\end{corollary}
+
+\subsection{Exact class count: verified closed form}
+\label{sec:v3-count}
+
+The two bounds of Theorem~\ref{thm:v3-rate} bracket a natural candidate for the exact count: equality in
+Proposition~\ref{prop:class-bound}, that is
+\[
+\NdistV(n)\;=\;\frac{\Nclass(n)+2}{2}
+\qquad (n\ge2),
+\]
+which holds iff distinct outward prefixes always produce distinct profiles modulo the forced $b$-mirror.
+This closed form is verified exhaustively --- all $4\cdot3^{n-1}$ non-backtracking words, no sampling,
+machine precision, no binning --- at $q=101$ and $q=211$ for $2\le n\le7$ (Table~\ref{tab:v3-count}), and
+it is consistent with the sampled $q=211$ campaign of Section~\ref{sec:v3}.
+Its status is verified/conjectural: the missing step is generic separation of $a$-mirror pairs at equal
+$|b|$, which the witness family of Lemma~\ref{lem:b-level-separation} cannot see; this has no impact on the
+rate, which is pinned by the theorem.
+At $n=1$ the count is $2$ rather than $(\Nclass(1)+2)/2=3$: the frozen span at $k=1$ is the line
+$\mathbb{C}\varphi_0$ and $|\langle\rho(z)\varphi_0,\varphi_0\rangle|=
+|\langle\rho(z)^{-1}\varphi_0,\varphi_0\rangle|$, so the two $X^{\pm}$ classes also merge there.
+
+\begin{table}[t]
+\centering
+\begin{tabular}{rrrrrr}
+\toprule
+$n$ & words $4\cdot3^{n-1}$ & $\Nclass(n)$ & $(\Nclass(n)+2)/2$ & distinct ($q=101$) & distinct ($q=211$) \\
+\midrule
+2 & 12 & 12 & 7 & 7 & 7 \\
+3 & 36 & 36 & 19 & 19 & 19 \\
+4 & 108 & 92 & 47 & 47 & 47 \\
+5 & 324 & 212 & 107 & 107 & 107 \\
+6 & 972 & 460 & 231 & 231 & 231 \\
+7 & 2916 & 964 & 483 & 483 & 483 \\
+\bottomrule
+\end{tabular}
+\caption{Exhaustive verification of the closed-form class count of the full-history channel (script
+\texttt{v3\_exact\_check.py}, simulation repository, directory \texttt{spectral/trajectory-entropy}):
+distinct V3 profiles over all non-backtracking words, machine precision, generic seeded probe.
+The factor-two reduction present from the start is the exact $b$-mirror identity
+(Lemma~\ref{lem:b-mirror}); geodesic-death compression starts exactly at $n=4$, as predicted
+(first deaths occur at step $3$, and their continuations merge from step $4$ on).}
+\label{tab:v3-count}
+\end{table}
 
 \section{Cosmological Interpretation}
 \label{sec:cosmology}
@@ -446,8 +740,9 @@ $3^n/n^4$ is structural.
 (Corollary~\ref{cor:endpoint-nogo}).
 \item Projective D4 distinguishability escapes the endpoint no-go, and the canonical O12-compatible channel
 gives Pell growth with $\hb=\log(1+\sqrt2)$ (Theorem~\ref{thm:branching-rate}).
-\item The full-history channel adds a compression profile before finite-$q$ saturation, candidate for an
-evolving effective equation of state (Section~\ref{sec:v3}).
+\item The full-history channel is strictly compressive with exactly pinned rate $\log 2<\hb$
+(Theorem~\ref{thm:v3-rate}); its finite-$n$ compression profile is the candidate for an evolving effective
+equation of state (Sections~\ref{sec:fullhistory} and~\ref{sec:eos}).
 \end{enumerate}
 
 \subsection{Relation to the de Sitter limit}
@@ -468,7 +763,9 @@ regime of the two-regime model of~\cite{Beau2026a5} before the branching regime 
 The canonical $b$-shadow rate is rigid: it is a substrate-combinatorial constant, independent of $q$ and of
 the spectral data, and therefore gives a clean positive asymptotic rate but not, by itself, an evolving
 equation of state.
-The evolving component, if present, must come from full-history compression, represented here by V3, whose
+The evolving component, if present, must come from full-history compression, represented here by V3.
+Its asymptotic rate is now pinned analytically ($\log 2$, Theorem~\ref{thm:v3-rate}) and its finite-$n$
+count is bracketed in closed form, so the candidate is analytic rather than purely numerical; its
 cosmological use remains conditional on a canonical identification of the full-history projective
 observable.
 Any confrontation with evolving-dark-energy indications~\cite{DESI2024} therefore belongs to the cosmological
@@ -495,6 +792,10 @@ The full-history channel is a finite Weyl--Heisenberg (Gabor) system.
 The deterministic rank sequence $1,5,13,25,41,61,\dots,q$ observed at every shell matches the abelian disk
 count $2k^2+2k+1$, consistent with the generic linear independence of Gabor systems in prime
 dimension~\cite{Lawrence2005} and its extensions~\cite{Malikiosis2015}.
+Here this is no longer only consistency: the rank sequence is a corollary of the full-spark property
+(Corollary~\ref{cor:gabor-rank}), and the same circle of ideas --- Chebotar\"ev's theorem on the minors of
+the prime-order DFT matrix~\cite{EvansIsaacs1976} --- powers the generic separation lemma behind the exact
+compression rate (Lemma~\ref{lem:b-level-separation}).
 
 \subsection{Causal sets and history counting}
 The reading ``growth is carried by histories rather than states'' is adjacent to causal-set and sum-over-
@@ -517,9 +818,16 @@ hypersurfaces (Lemma~\ref{lem:genericity}), giving $\Ndist=\Nb$ generically
 (Theorem~\ref{thm:branching-rate}).
 \item Verified: exact profile separation on all sampled histories at $q=211$, machine precision, no binning
 (Table~\ref{tab:pell}); ceiling convergence of the measured rate at $\epsilon\to0$.
-\item Measured, open interpretation: the V3 full-history compression profile before saturation.
+\item Proved: the full-history Gabor channel is governed by geodesic death
+(Lemma~\ref{lem:geodesic-death}); for a generic probe on the window $4n^2\le q$ its
+distinguishable-history count satisfies $2^n\le\NdistV(n)\le2^{n+2}$, pinning its rate at $\log 2$,
+strictly below the canonical rate (Theorem~\ref{thm:v3-rate}, Corollary~\ref{cor:strict-compression}).
+\item Verified, conjectural closed form: $\NdistV(n)=(\Nclass(n)+2)/2$, witnessed exhaustively at
+$q\in\{101,211\}$ (Table~\ref{tab:v3-count}); the missing step is generic separation of $a$-mirror pairs
+at equal $|b|$, with no impact on the rate.
 \item Open: canonical status of the full-history projective observable.
-\item Open: extraction of an evolving $w(n)$ from projective compression.
+\item Open: extraction of an evolving $w(n)$ from projective compression, now with the analytic finite-$n$
+profile of Section~\ref{sec:fullhistory} as input.
 \item Open: integration into the cosmological branch as a status paragraph and citation, after the above.
 \end{itemize}
 
@@ -538,8 +846,11 @@ For the canonical O12-compatible residual channel this rate is pinned exactly:
 proved for a generic probe and witnessed exactly on the sampled multi-prime campaign.
 This supplies the structural bridge from the spectral admissibility cascade to a de Sitter-like asymptotic
 component independent of matter content.
-The full-history compression profile remains the open candidate mechanism for an evolving effective equation
-of state.
+The full-history channel is now itself analytic: geodesic death pins its symbolic entropy at $\log 2$,
+strictly below the canonical rate, so projective compression of the full history has a proved rate rather
+than only a measured profile.
+Its finite-$n$ compression profile remains the candidate mechanism for an evolving effective equation of
+state; that reading stays interpretive and is deferred to the cosmological branch.
 
 \section*{Acknowledgements}
 Portions of the development of this note benefited from iterative interactions with large language models
