@@ -59,13 +59,17 @@ The equality is witnessed exactly on the sampled histories of a multi-prime camp
 of proper real-algebraic hypersurfaces.
 The full-history Gabor channel is strictly compressive: a geodesic-death mechanism confines nonzero symbols
 to trajectories whose abelian shadow is an outward geodesic, and for a generic probe its
-distinguishable-history count is bracketed between $2^n$ and $2^{n+2}$ on the pre-saturation window, so the
-channel has positive and exactly pinned symbolic entropy $\log 2$, strictly below the canonical rate.
+distinguishable-history count is exactly $2^{n+2}-4n-1$ on the pre-saturation window, so the channel has
+positive and exactly pinned symbolic entropy $\log 2$, strictly below the canonical rate.
+The last separation step behind the exact count --- mirror pairs at equal $|b|$ --- is closed by proving
+the generic non-vanishing of a mixed two-anchor coefficient, through a Hermitian jet at the orthogonal
+point of an anchor moment domain.
 Its finite-horizon compression profile is retained as the candidate input for an evolving effective equation
 of state.
-The cosmological conclusion is structural: accelerated expansion, if inherited by the cosmological branch,
-is not driven by exponential growth of Heisenberg states but by exponential branching of projectively
-distinguishable histories.
+Structural reading (interpretation, not a derived result): accelerated expansion, if inherited by the
+cosmological branch, is not driven by exponential growth of Heisenberg states but by exponential branching
+of projectively distinguishable histories, and the branching skeleton of that history space is now an
+exactly enumerated combinatorial object.
 \end{abstract}
 
 \medskip
@@ -692,9 +696,9 @@ which holds iff distinct outward prefixes always produce distinct profiles modul
 This closed form is verified exhaustively --- all $4\cdot3^{n-1}$ non-backtracking words, no sampling,
 machine precision, no binning --- at $q=101$ and $q=211$ for $2\le n\le7$ (Table~\ref{tab:v3-count}), and
 it is consistent with the sampled $q=211$ campaign of Section~\ref{sec:v3}.
-Its status is verified/conjectural: the missing step is generic separation of $a$-mirror pairs at equal
-$|b|$, which the witness family of Lemma~\ref{lem:b-level-separation} cannot see; this has no impact on the
-rate, which is pinned by the theorem.
+The closed form is proved in Section~\ref{sec:v3-count-theorem} (Theorem~\ref{thm:v3-exact-class-count}): the
+missing ingredient is generic separation of $a$-mirror pairs at equal $|b|$, which the witness family of
+Lemma~\ref{lem:b-level-separation} cannot see, and which is supplied by the mixed two-anchor coefficient.
 At $n=1$ the count is $2$ rather than $(\Nclass(1)+2)/2=3$: the frozen span at $k=1$ is the line
 $\mathbb{C}\varphi_0$ and $|\langle\rho(z)\varphi_0,\varphi_0\rangle|=
 |\langle\rho(z)^{-1}\varphi_0,\varphi_0\rangle|$, so the two $X^{\pm}$ classes also merge there.
@@ -721,6 +725,348 @@ The factor-two reduction present from the start is the exact $b$-mirror identity
 (first deaths occur at step $3$, and their continuations merge from step $4$ on).}
 \label{tab:v3-count}
 \end{table}
+
+\subsection{Generic $a$-mirror separation: the mixed two-anchor coefficient}
+\label{sec:amirror}
+
+This subsection closes the analytic core of the missing step named above: for a frontier pair
+$z=(a,b)$, $z'=(-a,b)$ with $|a|+|b|=k$ and $a\neq0$, the fusion $s_k(z)=s_k(z')$ is confined to a
+proper subset of probe space.
+By Lemma~\ref{lem:b-mirror} we may take $a>0$ and $b\ge0$, and write $F(\alpha,\beta)$ for the Gram
+determinant $\Delta_c$ of the tested system $D_{k-1}\cup\{(\alpha,\beta)\}$ in the $c$ channel, so
+that on the open set of invertible $D$-Grams the fusion is equivalent to the vanishing of the real
+polynomial
+\[
+\widetilde P \;=\; F(a,b)\,F(a,-b)\;-\;F(-a,b)\,F(-a,-b).
+\]
+
+The witness family is a weighted sparse probe with two satellites.
+Fix $m$ anchor positions $A_1,\dots,A_m\in\Zq$ whose pairwise circular distances exceed $2k+2$,
+weights $w_j>0$, satellite amplitudes $x_1,x_2\in\mathbb{C}$, and set
+\[
+\widehat\varphi
+\;=\;
+\sum_{j=1}^{m}\sqrt{w_j}\,e_{cA_j}
+\;+\;
+i\epsilon\bigl(x_1 e_{c(A_1+1)}+x_2 e_{c(A_2+1)}\bigr).
+\]
+In Fourier coordinates $\rho_c(\alpha,\beta,0)$ shifts the support by $c\beta$, so the Gram of a
+tested system splits into frequency sheets indexed by $\beta$: at $\epsilon=0$ it is block diagonal,
+with sheet block $A_\beta=W_\beta W_\beta^\ast$,
+$W_\beta[\alpha,j]=\sqrt{w_j}\,\zeta^{c(A_j+\beta)\alpha}$, rows indexed by
+$\Lambda_\beta=\{\alpha:|\alpha|+|\beta|\le k-1\}$, augmented by $\alpha=a$ on the sheet $\beta=b$
+of the tested point.
+Since $|a|=k-|b|$, the augmented set is again a consecutive integer range, so every sheet block is a
+weighted minor of the prime-order DFT and is invertible whenever $m\ge|\Lambda_\beta|$
+(Chebotar\"ev~\cite{EvansIsaacs1976}, as in Lemma~\ref{lem:b-level-separation}).
+The anchor separation kills every support overlap except the two anchor--satellite edges, so the
+order-$\epsilon$ block $B$ couples adjacent sheets only.
+For a sheet pair $(\beta,\beta+1)$ set $\tau_j=c(A_j+1+\beta)$ and
+$w_\beta(t)=(\zeta^{t\alpha})_{\alpha\in\Lambda_\beta}$.
+
+\begin{proposition}[Mixed two-anchor coefficient]
+\label{prop:mixed-two-anchor-coefficient}
+With the notation above, and all sheet blocks invertible,
+\[
+\widetilde P
+\;=\;
+F_0(b)\,F_0(-b)\;4\epsilon^2\sqrt{w_1w_2}\,\Im(x_1\overline{x_2})\;S(a,b)
+\;+\;O(\epsilon^3),
+\]
+where $F_0(\pm b)$ are the $\epsilon=0$ determinants,
+\[
+S(a,b)
+\;=\;
+\bigl[\Im Q_{b-1}+\Im Q_b\bigr]_{\mathrm{sys}(a,b)}
+\;+\;
+\bigl[\Im Q_{-b-1}+\Im Q_{-b}\bigr]_{\mathrm{sys}(a,-b)},
+\]
+\[
+Q_\beta
+\;=\;
+K_\beta(\tau_1,\tau_2)\,K_{\beta+1}(\tau_2,\tau_1),
+\qquad
+K_\beta(s,t)
+\;=\;
+w_\beta(s)^\ast A_\beta^{-1}w_\beta(t),
+\]
+the sums running over the sheet pairs adjacent to the tested sheet (empty sheets omitted; for $b=0$
+the two systems coincide and each pair is counted twice).
+In particular the first $a$-odd contribution is purely mixed in the two satellite amplitudes.
+\end{proposition}
+
+\begin{proof}
+Sheetwise, the tested Gram is $G(\epsilon)=A+\epsilon B+\epsilon^2 C$ with $A$ block diagonal, $B$
+supported on adjacent sheet pairs through the two edges (entries proportional to
+$i\sqrt{w_j}\,x_j$ and $-i\sqrt{w_j}\,\overline{x_j}$), and $C$ same-sheet with entries proportional
+to $|x_j|^2$.
+Since $B$ is block off-diagonal, $\operatorname{tr}(A^{-1}B)=0$ and the order-$\epsilon$ term
+vanishes; the determinant expansion gives
+\[
+\det G(\epsilon)
+=
+\det A\,
+\Bigl(
+1+\epsilon^2\operatorname{tr}(A^{-1}C)
+-\tfrac{\epsilon^2}{2}\operatorname{tr}(A^{-1}BA^{-1}B)
+\Bigr)
++O(\epsilon^3).
+\]
+The antiunitary $K\varphi(x)=\overline{\varphi(-x)}$ satisfies
+$K\rho_c(\alpha,\beta,0)K=\rho_c(-\alpha,\beta,0)$ and acts on the family by
+$(x_1,x_2)\mapsto(-\overline{x_1},-\overline{x_2})$, fixing the $\epsilon=0$ probe; identifying the
+bilinear parts of the two expansions gives $Q_\beta(-a)=\overline{Q_\beta(a)}$ and shows that every
+coefficient of $|x_j|^2$ is $a$-even: the $C$-traces are real (traces of $A^{-1}$ against positive
+semidefinite dyads), as are the same-satellite loop terms $|x_j|^2K_\beta(\tau_j,\tau_j)
+K_{\beta+1}(\tau_j,\tau_j)$, so both are invariant under $a\mapsto-a$ and cancel in $\widetilde P$.
+The only surviving order-$\epsilon^2$ contribution to the $a$-odd part is the mixed bilinear term of
+$\operatorname{tr}(A^{-1}BA^{-1}B)$; writing $B$ as a sum of dyads over the two edges reduces each
+adjacent-sheet trace to the displayed kernel products, with
+$\sqrt{w_1w_2}\,x_1\overline{x_2}$ in front, and $a$ enters only through the two sheet pairs
+adjacent to the tested sheet.
+Finally $Q_\beta(-a)=\overline{Q_\beta(a)}$ turns the mirror difference into
+$2i\,\Im Q_\beta$, and collecting the pairs of both tested systems gives $S(a,b)$.
+\end{proof}
+
+\begin{lemma}[Moment reduction of the mixed coefficient]
+\label{lem:mixed-coefficient-moment-reduction}
+Let $\xi_j=\zeta^{cA_j}$, $\mu=\zeta^{c}$, and $p(d)=\sum_j w_j\xi_j^{\,d}$.
+Then $A_\beta=D_\beta P_{\Lambda_\beta}D_\beta^\ast$ with $D_\beta=
+\operatorname{diag}(\zeta^{c\beta\alpha})$ and $P_\Lambda[\alpha,\alpha']=p(\alpha-\alpha')$, the
+sheet phases cancel inside the kernels, and $S(a,b)$ depends on the anchor configuration only
+through the moments $p(d)$ and the pair $(\xi_1,\xi_2)$:
+\begin{align*}
+S
+=
+\Im\Bigl[\,
+&k_{C_1}(\xi_1\mu,\xi_2\mu)\,k_{Z}(\xi_2,\xi_1)
++k_{Z}(\xi_1\mu,\xi_2\mu)\,k_{C_2}(\xi_2,\xi_1)\\
+{}+{}&k_{C_2}(\xi_1\mu,\xi_2\mu)\,k_{Z}(\xi_2,\xi_1)
++k_{Z}(\xi_1\mu,\xi_2\mu)\,k_{C_1}(\xi_2,\xi_1)
+\Bigr],
+\end{align*}
+where $k_\Lambda(\nu,\nu')=\widehat w(\nu)^\ast P_\Lambda^{-1}\widehat w(\nu')$,
+$\widehat w(\nu)_\alpha=\nu^{\alpha}$, and, with $\ell=k-1-|b|$, the ranges are
+$C_1=\{-(\ell+1),\dots,\ell+1\}$, $Z=\{-\ell,\dots,\ell+1\}$,
+$C_2=\{-(\ell-1),\dots,\ell-1\}$ for $b\ge1$
+(for $b=0$: $C_{1,2}$ replaced by $\{-(k-2),\dots,k-2\}$, $Z=\{-(k-1),\dots,k\}$, pairs doubled).
+In particular $S$ is a real-analytic function of $(p(d))_d$ on the domain where all sheet Toeplitz
+matrices are positive definite.
+\end{lemma}
+
+\begin{proof}
+Conjugating each sheet block by $D_\beta$ replaces $A_\beta$ by the Toeplitz matrix
+$P_{\Lambda_\beta}$ and the kernel vectors by $\widehat w(\xi_j\mu)$ on the lower sheet of a pair
+and $\widehat w(\xi_j)$ on the upper sheet: the $\beta$-dependence cancels, leaving only the ranges
+and the $\mu$-dressing of the lower slot.
+Enumerating the four sheet pairs of Proposition~\ref{prop:mixed-two-anchor-coefficient} gives the
+displayed form; rationality of $P_\Lambda^{-1}$ in the entries gives real-analyticity on the
+positive-definite domain.
+\end{proof}
+
+\begin{lemma}[Real span of anchor moment jets]
+\label{lem:anchor-moment-real-span}
+Let $D\ge1$ and let $\xi_1,\dots,\xi_m$ be distinct points on the unit circle with $m\ge2D+1$.
+Then the real-linear map
+\[
+\mathbb{R}^m\longrightarrow\mathbb{R}\times\mathbb{C}^{D},
+\qquad
+w\longmapsto\Bigl(p(0),\,\bigl(p(d)\bigr)_{d=1,\dots,D}\Bigr),
+\qquad
+p(d)=\sum_j w_j\xi_j^{\,d},
+\]
+is surjective; consequently the image of the open cone $\{w:w_j>0\}$ is open.
+\end{lemma}
+
+\begin{proof}
+If the map were not surjective, a nonzero real-linear functional would annihilate its image: there
+would exist $(c_0,h)\in\mathbb{R}\times\mathbb{C}^{D}$, not all zero, with
+$c_0\,p(0)+\Re\sum_{d=1}^{D}\overline{h_d}\,p(d)=0$ for every $w$, hence
+$c_0+\Re\sum_d\overline{h_d}\,\xi_j^{\,d}=0$ for every $j$.
+The left-hand side is a nonzero real trigonometric polynomial of degree at most $D$, which has at
+most $2D$ zeros on the circle, contradicting $m\ge2D+1$.
+A surjective linear map is open.
+\end{proof}
+
+\begin{lemma}[Hermitian jet at the orthogonal moment]
+\label{lem:orthogonal-moment-hermitian-jet}
+Normalise $p(0)=1$ and let $p_0$ be the orthogonal moment point, $p_0(d)=\delta_{d0}$.
+Then $S=0$ at $p_0$.
+Along the Hermitian direction that perturbs the single mode $f$ ($p(f)=t$, $p(-f)=\overline t$, all
+other off-diagonal moments zero), the first variation is $\mathrm{d}S=2\Re(A\,t)$ with, for
+$b\ge1$, $L=k-|b|=|a|$ and $f=2L$,
+\[
+A
+=
+\sin(L\theta_0)\,\bigl(\mu^{-2L}-1\bigr)\,(\xi_1\xi_2)^{-L},
+\qquad
+\theta_0=\arg\bigl(\overline{\xi_1}\xi_2\bigr),
+\]
+and, for $b=0$ and $f=2k-1$,
+\[
+A
+=
+i\,D_{k-2}(\theta_0)\,\bigl(\mu^{-(2k-1)}-1\bigr)\,(\xi_1\xi_2)^{-k}\,(\xi_2-\xi_1),
+\qquad
+D_r(\theta)=\sum_{|\alpha|\le r}e^{i\alpha\theta}.
+\]
+For $q$ prime and $A_1\neq A_2$ these jets are nonzero for every admissible anchor pair: each
+condition $\sin(L\theta_0)\neq0$, $D_{k-2}(\theta_0)\neq0$, $\mu^{f}\neq1$, $\xi_1\neq\xi_2$ reads
+$u\,c\,(A_2-A_1)\not\equiv0 \pmod q$ or $u\,c\not\equiv0\pmod q$ for some $0<u<q$.
+\end{lemma}
+
+\begin{proof}
+At $p_0$ every $P_\Lambda$ is the identity, so $k_\Lambda(\nu,\nu')=\sum_{\alpha\in\Lambda}
+\rho^{\alpha}$ with $\rho=\overline{\nu}\nu'$: the $\mu$-dressing cancels in $\rho$, the four
+products of Lemma~\ref{lem:mixed-coefficient-moment-reduction} pair into conjugates, and $S=0$.
+Linearising $P_\Lambda^{-1}=I-tE_f-\overline t E_{-f}+O(|t|^2)$, where $E_{\pm f}$ is the
+$0$/$1$ matrix of the $\pm f$ diagonal, only the range of largest spread carries the mode $f$, and
+it does so on its single corner pair: for $b\ge1$ this is $C_1$, with
+$\widehat w(\nu)^\ast E_f\widehat w(\nu')=(\nu\nu')^{-L}$, so
+$\delta k_{C_1}(\nu,\nu')=-t(\nu\nu')^{-L}-\overline t(\nu\nu')^{L}$, and only the first and fourth
+terms contribute:
+\[
+\delta S
+=
+\Im\bigl[\delta k_{C_1}(\xi_1\mu,\xi_2\mu)\bigl(D_\ell(\theta_0)+\overline\rho^{\,L}\bigr)
++\bigl(D_\ell(\theta_0)+\rho^{L}\bigr)\,\delta k_{C_1}(\xi_2,\xi_1)\bigr].
+\]
+Writing $g=\xi_1\xi_2$ and collecting the $\overline t$ terms as conjugates of $t$ terms, the
+bracket reduces to $t\,g^{-L}\bigl(\mu^{-2L}-1\bigr)\bigl(\rho^{L}-\overline\rho^{\,L}\bigr)$, that
+is $\mathrm{d}S=2\Re(A\,t)$ with the displayed $A$.
+For $b=0$ the mode $f=2k-1$ lives on the corner pair of $Z$,
+$\widehat w(\nu)^\ast E_f\widehat w(\nu')=\nu^{-k}\nu'^{-(k-1)}$, both doubled pairs contribute
+with the real factor $D_{k-2}(\theta_0)$, and the same collection gives the displayed $A$ through
+$\xi_2^{-(k-1)}\xi_1^{-k}-\xi_2^{-k}\xi_1^{-(k-1)}=g^{-k}(\xi_2-\xi_1)$.
+Each nonvanishing condition is of the stated $\mathbb{F}_q^{\times}$ form because
+$\sin(L\theta_0)=0$ iff $2Lc(A_2-A_1)\equiv0$, $D_{k-2}(\theta_0)=0$ iff
+$(2k-3)c(A_2-A_1)\equiv0$, and $\mu^{f}=1$ iff $fc\equiv0\pmod q$, with every factor a nonzero
+residue.
+\end{proof}
+
+\begin{theorem}[Generic non-vanishing of the mixed coefficient]
+\label{thm:generic-nonvanishing-mixed-coefficient}
+Let $q$ be prime, $2\le k$, $q>(4k-1)(2k+3)$, and let $(a,b)$ be a frontier pair with $a\neq0$.
+Then $S(a,b)$ is not the zero function on the positive Toeplitz moment domain, and its zero set is
+a proper closed real-analytic subset.
+Consequently there exist admissible weighted anchor configurations with $S(a,b)\neq0$, the
+polynomial $\widetilde P$ is not identically zero on probe space, and the $a$-mirror fusion locus
+$\{s_k(a,b)=s_k(-a,b)\}$ is contained in a proper real-algebraic subset of probe space.
+\end{theorem}
+
+\begin{proof}
+Set $D=2k-1$ (the largest sheet spread) and $m=4k-1\ge2D+1$; the window $q>(4k-1)(2k+3)$ leaves
+room for $m$ anchor positions with pairwise circular distances exceeding $2k+2$.
+Let $\Omega$ be the set of moment vectors $\bigl(p(0),(p(d))_{d\le D}\bigr)$ for which every sheet
+Toeplitz matrix is positive definite: $\Omega$ is open, convex (the constraints are linear in $p$),
+hence connected, and contains the orthogonal point $p_0$.
+By Lemma~\ref{lem:mixed-coefficient-moment-reduction}, $S$ is real-analytic on $\Omega$.
+For every weight vector $w>0$ the moment vector $p(w)$ lies in $\Omega$, since each sheet Toeplitz
+matrix is the weighted Gram of distinct DFT columns (Chebotar\"ev~\cite{EvansIsaacs1976}); by
+Lemma~\ref{lem:anchor-moment-real-span} the image $U=\{p(w):w>0\}$ is a nonempty open subset of
+$\Omega$.
+If $S$ vanished identically on $U$, real-analytic continuation on the connected set $\Omega$ would
+force $S\equiv0$ on $\Omega$, contradicting Lemma~\ref{lem:orthogonal-moment-hermitian-jet}: the
+germ of $S$ at $p_0\in\Omega$ is nonzero, because its first variation along an admissible Hermitian
+direction is $2\Re(A\,t)\not\equiv0$.
+Hence $S\neq0$ at some $p(w^\ast)$, $w^\ast>0$, and the zero set of $S$ is a proper closed
+real-analytic subset of $\Omega$.
+By Proposition~\ref{prop:mixed-two-anchor-coefficient} the $\epsilon^2$ coefficient of
+$\widetilde P$ along the witness family at $w^\ast$ is nonzero whenever $\Im(x_1\overline{x_2})
+\neq0$, so $\widetilde P\not\equiv0$ as a polynomial on probe space, and the fusion locus is
+contained in the union of its zero set with the Gram degeneracy hypersurfaces.
+\end{proof}
+
+\begin{remark}[Machine certification]
+\label{rem:amirror-certification}
+Every identity above is certified numerically at machine precision: the $\epsilon^2$ identity and
+the kernel formula for $S$ (multiple anchor geometries and pairs, including $b=k-1$ and $b=0$, and
+the weighted $\sqrt{w_1w_2}$ normalisation), the moment reduction, the exact vanishing of $S$ at the
+orthogonal point, and the closed-form Hermitian jets (scripts \texttt{amirror\_mixed\_coeff.py} and
+\texttt{amirror\_jet\_certify.py}, simulation repository, directory
+\texttt{spectral/trajectory-entropy}).
+\end{remark}
+
+\subsection{The exact class count as a theorem}
+\label{sec:v3-count-theorem}
+
+Theorem~\ref{thm:generic-nonvanishing-mixed-coefficient} closes the analytic half of the exact count; the
+remaining half is combinatorial, and rests on a rigidity property of outward geodesics.
+
+\begin{lemma}[Separation of quotient classes]
+\label{lem:v3-quotient-class-separation}
+Let $q$ be prime and $n\ge2$ with $q>(4n-1)(2n+3)$.
+Outside a finite union of proper real-algebraic hypersurfaces in probe space, two full-history classes of
+Proposition~\ref{prop:class-bound} have the same V3 profile up to depth $n$ if and only if they are
+identified by the $b$-mirror involution of Lemma~\ref{lem:b-mirror}.
+\end{lemma}
+
+\begin{proof}
+First, $q>(4n-1)(2n+3)$ implies $4n^2\le q$, so Lemmas~\ref{lem:alive-positivity}
+and~\ref{lem:b-level-separation} apply on the whole horizon.
+A profile is determined by the outward prefix up to the first inward step
+(Proposition~\ref{prop:class-bound}), so classes are outward prefixes: of length $n$ for alive classes,
+with a marked death step $d\le n$ and length $d-1$ for dead ones.
+If one class is alive at a step $d$ at which the other is dead, Lemma~\ref{lem:alive-positivity} separates
+the profiles there ($s_d>0$ against $s_d=0$); two dead classes with distinct death steps are separated at
+the earlier one.
+It therefore suffices to separate two distinct outward prefixes over a common horizon $h\ge2$, with $h=n$
+for alive classes and $h=d-1\ge2$ for a common death step $d$.
+If $|b_k|\neq|b'_k|$ at some $k\le h$, Lemma~\ref{lem:b-level-separation} separates the profiles at the
+first such $k$.
+Otherwise $|b_k|=|b'_k|$, hence $|a_k|=|a'_k|$, for every $k\le h$.
+Along an outward geodesic every step increases $|a|$ or $|b|$ by one, so $|a_k|$ and $|b_k|$ are
+non-decreasing, a coordinate never returns to zero once it has left it, and its sign is the sign of its
+first step.
+The unsigned sequences $(|a_k|,|b_k|)_{k\le h}$ therefore determine the prefix up to the two global signs:
+the two prefixes agree up to the Klein group generated by the $a$-mirror and the $b$-mirror.
+Modulo the forced $b$-mirror the only nontrivial case is the pointwise $a$-mirror, $z'_k=(-a_k,b_k)$ for
+all $k$, and the two classes are distinct precisely when the prefix contains an $a$-step.
+In that case $a_h\neq0$ (dead prefixes are non-axis, so they contain an $a$-step and $a_{d-1}\neq0$), the
+points $(a_h,b_h)$ and $(-a_h,b_h)$ form a frontier pair with nonzero $a$-coordinate, and
+Theorem~\ref{thm:generic-nonvanishing-mixed-coefficient}, applied at step $k=h$ (its window
+$q>(4h-1)(2h+3)$ is implied), confines their fusion to a proper real-algebraic subset: outside it the two
+profiles differ at step $h$.
+There are finitely many class pairs and steps, so the union of all exceptional sets remains a finite union
+of proper real-algebraic hypersurfaces.
+\end{proof}
+
+\begin{theorem}[Exact full-history class count]
+\label{thm:v3-exact-class-count}
+Let $q$ be prime and $n\ge2$ with $q>(4n-1)(2n+3)$.
+For every probe outside a finite union of proper real-algebraic hypersurfaces,
+\[
+\NdistV(n)
+\;=\;
+\frac{\Nclass(n)+2}{2}
+\;=\;
+2^{\,n+2}-4n-1 .
+\]
+\end{theorem}
+
+\begin{proof}
+Proposition~\ref{prop:class-bound} gives $\NdistV(n)\le(\Nclass(n)+2)/2$, the factor two being the forced
+$b$-mirror identification, whose only fixed classes are the two pure $X^{\pm}$ classes.
+Lemma~\ref{lem:v3-quotient-class-separation} gives the reverse inequality generically: after quotienting by
+the $b$-mirror, no two distinct classes share a profile.
+The closed form follows from $A(m)=2^{m+2}-4$:
+\[
+\Nclass(n)=A(n)+\sum_{d=3}^{n}\bigl(A(d-1)-4\bigr)=2^{\,n+3}-8n-4,
+\qquad
+\frac{\Nclass(n)+2}{2}=2^{\,n+2}-4n-1 .
+\]
+\end{proof}
+
+\begin{corollary}[Exact symbolic entropy from the exact count]
+\label{cor:v3-exact-symbolic-entropy}
+Under the hypotheses of Theorem~\ref{thm:v3-exact-class-count},
+$\tfrac1n\log\NdistV(n)\to\log2$ along every prime family with $q>(4n-1)(2n+3)$: the rate of
+Theorem~\ref{thm:v3-rate} is recovered with the exact count in place of the bracket.
+\end{corollary}
+
+At $n=1$ the count remains $2$ rather than $(\Nclass(1)+2)/2=3$, as noted in
+Section~\ref{sec:v3-count}: the two $X^{\pm}$ classes merge exactly at the first step, so the theorem
+starts at $n=2$.
 
 \section{Cosmological Interpretation}
 \label{sec:cosmology}
@@ -765,9 +1111,9 @@ the spectral data, and therefore gives a clean positive asymptotic rate but not,
 equation of state.
 The evolving component, if present, must come from full-history compression, represented here by V3.
 Its asymptotic rate is now pinned analytically ($\log 2$, Theorem~\ref{thm:v3-rate}) and its finite-$n$
-count is bracketed in closed form, so the candidate is analytic rather than purely numerical; its
-cosmological use remains conditional on a canonical identification of the full-history projective
-observable.
+count is exact on the generic pre-saturation window (Theorem~\ref{thm:v3-exact-class-count}), so the
+candidate is analytic rather than purely numerical; its cosmological use remains conditional on a canonical
+identification of the full-history projective observable.
 Any confrontation with evolving-dark-energy indications~\cite{DESI2024} therefore belongs to the cosmological
 branch~\cite{Beau2026d} and only after that identification; it is not claimed here.
 
@@ -822,10 +1168,14 @@ hypersurfaces (Lemma~\ref{lem:genericity}), giving $\Ndist=\Nb$ generically
 (Lemma~\ref{lem:geodesic-death}); for a generic probe on the window $4n^2\le q$ its
 distinguishable-history count satisfies $2^n\le\NdistV(n)\le2^{n+2}$, pinning its rate at $\log 2$,
 strictly below the canonical rate (Theorem~\ref{thm:v3-rate}, Corollary~\ref{cor:strict-compression}).
-\item Verified, conjectural closed form: $\NdistV(n)=(\Nclass(n)+2)/2$, witnessed exhaustively at
-$q\in\{101,211\}$ (Table~\ref{tab:v3-count}); the missing step is generic separation of $a$-mirror pairs
-at equal $|b|$, with no impact on the rate.
+\item Proved: the exact full-history class count $\NdistV(n)=(\Nclass(n)+2)/2=2^{n+2}-4n-1$ on the window
+$q>(4n-1)(2n+3)$, $n\ge2$: the mixed two-anchor coefficient is generically nonzero
+(Theorem~\ref{thm:generic-nonvanishing-mixed-coefficient}), quotient classes separate
+(Lemma~\ref{lem:v3-quotient-class-separation}), and the closed form follows
+(Theorem~\ref{thm:v3-exact-class-count}); witnessed exhaustively at $q\in\{101,211\}$
+(Table~\ref{tab:v3-count}).
 \item Open: canonical status of the full-history projective observable.
+\item Open: dictionary between shell rank, projective depth, and effective cosmological time.
 \item Open: extraction of an evolving $w(n)$ from projective compression, now with the analytic finite-$n$
 profile of Section~\ref{sec:fullhistory} as input.
 \item Open: integration into the cosmological branch as a status paragraph and citation, after the above.
@@ -846,11 +1196,27 @@ For the canonical O12-compatible residual channel this rate is pinned exactly:
 proved for a generic probe and witnessed exactly on the sampled multi-prime campaign.
 This supplies the structural bridge from the spectral admissibility cascade to a de Sitter-like asymptotic
 component independent of matter content.
-The full-history channel is now itself analytic: geodesic death pins its symbolic entropy at $\log 2$,
-strictly below the canonical rate, so projective compression of the full history has a proved rate rather
-than only a measured profile.
+The full-history channel is now itself analytic and exactly counted: geodesic death pins its symbolic
+entropy at $\log 2$, strictly below the canonical rate, and the class count is the theorem
+$\NdistV(n)=2^{n+2}-4n-1$ --- the $b$-mirror is the only generic degeneracy of the projective history
+record, the $a$-mirror being broken by the mixed two-anchor coefficient.
 Its finite-$n$ compression profile remains the candidate mechanism for an evolving effective equation of
 state; that reading stays interpretive and is deferred to the cosmological branch.
+
+\subsection*{Interpretive outlook}
+The following reading is interpretive: a structural interpretation of the proved statements above, not
+itself a derived result.
+Within the programme, this note says that what grows exponentially is not the set of states of the
+substrate --- endpoint growth is polynomial --- but the set of histories that the non-injective projection
+can distinguish: accelerated expansion, if inherited by the cosmological branch, is a property of the
+projective record, available over a polynomially growing state space and independent of matter content.
+The exact class count sharpens the reading: the branching skeleton of the distinguishable-history space is
+completely explicit --- outward geodesic prefixes, identified only under one exact mirror symmetry --- so
+the de Sitter-like component rests on an enumerable combinatorial object rather than on an asymptotic
+estimate, and any future cosmological use inherits a discrete, falsifiable signature.
+A third party should situate the claim as conditional on two open steps stated in
+Section~\ref{sec:status}: the dictionary between shell rank and cosmic time, and the transfer of the
+admissibility cascade to the cosmological branch.
 
 \section*{Acknowledgements}
 Portions of the development of this note benefited from iterative interactions with large language models
