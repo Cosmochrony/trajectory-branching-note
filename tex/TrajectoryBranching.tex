@@ -65,7 +65,8 @@ The last separation step behind the exact count --- mirror pairs at equal $|b|$ 
 the generic non-vanishing of a mixed two-anchor coefficient, through a Hermitian jet at the orthogonal
 point of an anchor moment domain.
 Its finite-horizon compression profile is retained as the candidate input for an evolving effective equation
-of state.
+of state, now gated by a conditional no-go: under the minimal rank--time dictionary and count-to-density
+mappings its observable content is confined to the early low-rank window.
 Structural reading (interpretation, not a derived result): accelerated expansion, if inherited by the
 cosmological branch, is not driven by exponential growth of Heisenberg states but by exponential branching
 of projectively distinguishable histories, and the branching skeleton of that history space is now an
@@ -298,6 +299,34 @@ Both $\Nb$ and the sequence defined by the Pell recursion with the same initial 
 three-term linear recursion and agree at $n=1,2,3$ ($3,7,17$ by direct computation), hence coincide.
 The rate is the Perron root $1+\sqrt2$ of $\lambda^2-2\lambda-1$.
 \end{proof}
+
+\begin{remark}[Arithmetic identity]
+\label{rem:pell-arithmetic}
+The canonical history count is also the numerator sequence of the convergents to $\sqrt2$, equivalently the
+$x$-sequence of the Pell equations $x^2-2y^2=\pm1$~\cite{NSW1981}.
+This arithmetic rigidity follows immediately from the recurrence and initial conditions.
+Its physical significance, if any, is not used in the present note.
+\end{remark}
+
+\begin{remark}[Memory depth one]
+\label{rem:memory-depth-one}
+The rank-two recurrence admits a transfer-matrix formulation,
+\[
+\begin{pmatrix}\Nb(n)\\ \Nb(n-1)\end{pmatrix}
+=\begin{pmatrix}2&1\\ 1&0\end{pmatrix}
+\begin{pmatrix}\Nb(n-1)\\ \Nb(n-2)\end{pmatrix}.
+\]
+At the level of the distinguishable-history quotient, the canonical channel therefore has effective memory
+depth one: the next count is determined by the current count and one previous count, with no dependence on
+the full past record.
+\end{remark}
+
+Structural reading (interpretation, not a derived result): the canonical rate brackets doubling from above,
+$1+\sqrt2>2$, so each rank contributes a doubling together with a memory bonus carried by the single
+retained previous count, while the full-history channel of Section~\ref{sec:fullhistory} compresses to pure
+doubling with a vanishing finite-$n$ correction.
+This bracket is the sharpest non-speculative wording of constrained unfolding available at this level; it is
+not used in any derivation below.
 
 \subsection{Generic separation and the branching theorem}
 \label{sec:genericity}
@@ -1114,8 +1143,21 @@ Its asymptotic rate is now pinned analytically ($\log 2$, Theorem~\ref{thm:v3-ra
 count is exact on the generic pre-saturation window (Theorem~\ref{thm:v3-exact-class-count}), so the
 candidate is analytic rather than purely numerical; its cosmological use remains conditional on a canonical
 identification of the full-history projective observable.
-Any confrontation with evolving-dark-energy indications~\cite{DESI2024} therefore belongs to the cosmological
-branch~\cite{Beau2026d} and only after that identification; it is not claimed here.
+The exact count now also bounds this candidate from within.
+The finite-$n$ rate correction implied by Theorem~\ref{thm:v3-exact-class-count} decays like $n\,2^{-n}$, so
+under the rank--time dictionary hypothesis of the cosmological branch~\cite{Beau2026d} any equation-of-state
+transient built on the full-history profile decays like $(\log a)\,a^{-\log 2}$ and its observable content
+is confined to the early low-rank window.
+Moreover, no mapping from distinguishable-history counts to an energy density is forced by the programme,
+and under the dictionary hypothesis together with the minimal mapping class (density proportional to the
+count, to its logarithm, or to the inter-channel compression fraction) the exact counts do not supply an
+evolving equation of state at the amplitude indicated by current evolving-dark-energy
+fits~\cite{DESI2024}.
+This is a conditional no-go, not a closure: it gates the finite-$n$ candidate in addition to the
+identification condition above, and any evolving component must enter through rank-dependent corrections to
+the dictionary itself or through the spectral-equilibrium route~\cite{Beau2026Thermodynamics}.
+Any confrontation with evolving-dark-energy indications therefore belongs to the cosmological
+branch~\cite{Beau2026d} and only after those steps; it is not claimed here.
 
 \section{Neighbouring Theory}
 \label{sec:neighbouring}
@@ -1176,8 +1218,10 @@ $q>(4n-1)(2n+3)$, $n\ge2$: the mixed two-anchor coefficient is generically nonze
 (Table~\ref{tab:v3-count}).
 \item Open: canonical status of the full-history projective observable.
 \item Open: dictionary between shell rank, projective depth, and effective cosmological time.
-\item Open: extraction of an evolving $w(n)$ from projective compression, now with the analytic finite-$n$
-profile of Section~\ref{sec:fullhistory} as input.
+\item Conditional no-go: under the rank--time dictionary and the minimal count-to-density mapping class,
+the exact counts do not supply an observable evolving equation of state (Section~\ref{sec:eos}); the
+remaining evolving-$w$ routes are rank-dependent dictionary corrections and the spectral-equilibrium
+route~\cite{Beau2026Thermodynamics}.
 \item Open: integration into the cosmological branch as a status paragraph and citation, after the above.
 \end{itemize}
 
@@ -1200,8 +1244,9 @@ The full-history channel is now itself analytic and exactly counted: geodesic de
 entropy at $\log 2$, strictly below the canonical rate, and the class count is the theorem
 $\NdistV(n)=2^{n+2}-4n-1$ --- the $b$-mirror is the only generic degeneracy of the projective history
 record, the $a$-mirror being broken by the mixed two-anchor coefficient.
-Its finite-$n$ compression profile remains the candidate mechanism for an evolving effective equation of
-state; that reading stays interpretive and is deferred to the cosmological branch.
+Its finite-$n$ compression profile is now gated by a conditional no-go for late-time use: under the minimal
+dictionary and mapping hypotheses its observable content is confined to the early low-rank window
+(Section~\ref{sec:eos}), and the remaining evolving-$w$ routes lie outside the exact counts.
 
 \subsection*{Interpretive outlook}
 The following reading is interpretive: a structural interpretation of the proved statements above, not
