@@ -22,7 +22,12 @@ combined with a Klein rigidity property of outward geodesics; the channel has po
 symbolic entropy log 2, strictly below the canonical rate log(1+sqrt(2)).
 The count is witnessed exhaustively at q in {101, 211}.
 The finite-n compression profile is retained as the candidate input for an evolving effective equation of
-state (interpretive, deferred to the cosmological branch).
+state, now gated by a conditional no-go (since v1.3.0): under the rank-time dictionary hypothesis and the
+minimal count-to-density mapping class, the exact counts do not supply an observable evolving equation of
+state -- their observable content is confined to the early low-rank window; the remaining evolving-w routes
+are rank-dependent dictionary corrections or the spectral-equilibrium route.
+Version 1.3.0 also adds two arithmetic remarks (Pell-equation identity of the canonical count;
+transfer-matrix formulation with effective memory depth one) and a labelled doubling-bracket reading.
 
 Central result channel: V2 (generic probe, O12 basis), rate log(1+sqrt(2)).
 Full-history channel: V3 (Gabor basis), proved strictly compressive, rate log 2.
@@ -46,5 +51,5 @@ Certification of the mixed two-anchor coefficient (eps^2 identity, moment reduct
 ## Status
 
 Deposited on Zenodo, concept DOI [10.5281/zenodo.21197757](https://doi.org/10.5281/zenodo.21197757)
-(latest version 1.2.0: exact full-history class count 2^(n+2) - 4n - 1, generic a-mirror separation).
+(latest version 1.3.0: conditional equation-of-state no-go, arithmetic and memory-depth remarks).
 Web page: https://cosmochrony.org/science/cosmology/trajectory-branching/
