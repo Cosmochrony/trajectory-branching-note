@@ -2,3 +2,19 @@ out/
 pdfs/
 .DS_Store
 .idea/
+
+# Common build-artefact baseline
+**/.DS_Store
+.venv/
+media/
+**/__pycache__/
+*.py[cod]
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
