@@ -51,5 +51,6 @@ Certification of the mixed two-anchor coefficient (eps^2 identity, moment reduct
 ## Status
 
 Deposited on Zenodo, concept DOI [10.5281/zenodo.21197757](https://doi.org/10.5281/zenodo.21197757)
-(latest version 1.3.0: conditional equation-of-state no-go, arithmetic and memory-depth remarks).
+(last deposited version 1.3.0: conditional equation-of-state no-go, arithmetic and memory-depth remarks;
+v1.3.1 is a local candidate).
 Web page: https://cosmochrony.org/science/cosmology/trajectory-branching/
