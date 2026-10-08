@@ -382,8 +382,7 @@ of the seed.
 \section{Numerical Evidence}
 \label{sec:numerics}
 
-The campaign (script \texttt{trajectory\_branching.py}, simulation repository, directory
-\texttt{spectral/trajectory-entropy}) samples $T$ non-backtracking trajectories on $\Heis(\Zq)$ for
+The campaign (script \texttt{code/trajectory\_branching.py} of this repository) samples $T$ non-backtracking trajectories on $\Heis(\Zq)$ for
 $q\in\{29,61,101,211\}$ ($T=2\times10^4$ for $q\le101$, $T=10^5$ for $q=211$; three conjugate block pairs per
 prime; fixed reported seeds), and evaluates three channels on one shared path ensemble:
 V1, uniform probe with the O12 basis; V2, generic probe with the O12 basis (the canonical channel of
@@ -748,7 +747,7 @@ $n$ & words $4\cdot3^{n-1}$ & $\Nclass(n)$ & $(\Nclass(n)+2)/2$ & distinct ($q=1
 \bottomrule
 \end{tabular}
 \caption{Exhaustive verification of the closed-form class count of the full-history channel (script
-\texttt{v3\_exact\_check.py}, simulation repository, directory \texttt{spectral/trajectory-entropy}):
+\texttt{code/v3\_exact\_check.py} of this repository):
 distinct V3 profiles over all non-backtracking words, machine precision, generic seeded probe.
 The factor-two reduction present from the start is the exact $b$-mirror identity
 (Lemma~\ref{lem:b-mirror}); geodesic-death compression starts exactly at $n=4$, as predicted
@@ -1012,9 +1011,8 @@ contained in the union of its zero set with the Gram degeneracy hypersurfaces.
 Every identity above is certified numerically at machine precision: the $\epsilon^2$ identity and
 the kernel formula for $S$ (multiple anchor geometries and pairs, including $b=k-1$ and $b=0$, and
 the weighted $\sqrt{w_1w_2}$ normalisation), the moment reduction, the exact vanishing of $S$ at the
-orthogonal point, and the closed-form Hermitian jets (scripts \texttt{amirror\_mixed\_coeff.py} and
-\texttt{amirror\_jet\_certify.py}, simulation repository, directory
-\texttt{spectral/trajectory-entropy}).
+orthogonal point, and the closed-form Hermitian jets (scripts \texttt{code/amirror\_mixed\_coeff.py} and
+\texttt{code/amirror\_jet\_certify.py} of this repository).
 \end{remark}
 
 \subsection{The exact class count as a theorem}
