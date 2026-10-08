@@ -65,8 +65,8 @@ python code/trajectory_branching.py --primes 29 211 --T 100000 --out-dir traj_ou
 python code/trajectory_branching.py --primes 61 101 --T 20000 --out-dir traj_outputs
 python code/trajectory_branching.py --primes 29 61 101 211 --plot-only --out-dir traj_outputs
 
-# Table tab:pell and the eps = 1e-3 refinement (reads traj_outputs/q211_traj.npz written above; about 1 min
-# of sample processing; add --regenerate to recompute the q = 211 symbols in memory instead)
+# Table tab:pell and the eps = 1e-3 refinement (reads traj_outputs/q211_traj.npz written above, about 5 s;
+# use --regenerate instead of --data-dir to recompute the q = 211 symbols in memory, about 2 min)
 python code/pell_counts.py --data-dir traj_outputs
 ```
 

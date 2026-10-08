@@ -22,7 +22,7 @@ WHAT IT COMPUTES
    * h_2(n) at eps = 1e-3: `estimators_for_eps(symbols[V2, block], 1e-3)[0]`, mean over the three blocks.
    The symbols are read from `q211_traj.npz` (default `--data-dir`: `traj_outputs/` next to this script, where
    `trajectory_branching.py --primes 211 --T 100000` writes it; its q = 211 output is bit-identical to the
-   stored campaign data), or regenerated in memory with `--regenerate` (about 1 minute).
+   stored campaign data), or regenerated in memory with `--regenerate` (about 2 minutes).
 
 ACCEPTANCE
 ----------
@@ -109,7 +109,7 @@ def main():
     p.add_argument("--data-dir", type=pathlib.Path, default=tb.OUTPUT_DIR,
                    help="directory holding q211_traj.npz (default: code/traj_outputs)")
     p.add_argument("--regenerate", action="store_true",
-                   help="recompute the q = 211 symbols in memory (about 1 minute) instead of reading the npz")
+                   help="recompute the q = 211 symbols in memory (about 2 minutes) instead of reading the npz")
     p.add_argument("--exact-only", action="store_true", help="deterministic columns only")
     args = p.parse_args()
     ok = True
