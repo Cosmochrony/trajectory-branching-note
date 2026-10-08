@@ -5,5 +5,6 @@
   "publication_type": "workingpaper",
   "main_tex": "tex/TrajectoryBranching.tex",
   "zenodo_id": 21197757,
-  "doi": "10.5281/zenodo.21197757"
+  "doi": "10.5281/zenodo.21197757",
+  "code_url": "https://github.com/Cosmochrony/trajectory-branching-note/tree/885dc70c75e2610d389069eb6a52d81e5dc29b9d/code"
 }
