@@ -105,7 +105,8 @@ python trajectory_branching.py                        # q in {29, 61, 101}
 python trajectory_branching.py --primes 29 --T 20000  # smoke test
 python trajectory_branching.py --plot-only            # figure from npz
 
-REQUIRES: spectral_O12.py from ../o25 (imported).
+REQUIRES: numpy, matplotlib, and the vendored module spectral_O12.py in this directory (verbatim copy,
+provenance in PROVENANCE.md).
 Outputs (--out-dir, default traj_outputs/): q{q}_traj.npz,
 trajectory_branching_h.pdf, summary tables on stdout.
 """
@@ -119,7 +120,7 @@ import time
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.join(HERE, "..", "o25"))
+sys.path.insert(0, HERE)   # spectral_O12.py is vendored next to this script
 
 from spectral_O12 import (
     EPS_GS,
