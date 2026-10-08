@@ -52,7 +52,22 @@ No computation changed.
 - Stored campaign outputs (not versioned here, 9 MB): the four `q{q}_traj.npz` of the workspace directory
   `simulation/spectral/trajectory-entropy/traj_outputs/` (4 July 2026). `trajectory_branching.py` regenerates them
   (the reproduction check of 8 October 2026 reproduces every metadata field, `phi0`, `cs`, `ranks_o12`,
-  `ranks_gab` and `shell_sizes` exactly, and `symbols` to 5e-8 absolute, float32 noise).
+  `ranks_gab` and `shell_sizes` exactly; `symbols` bit-identically for q = 211, and for q = 29, 61, 101 to at most
+  4.3e-8 absolute (float32 noise), with all estimators h_2, h_low, h_up identical for every variant and epsilon).
+- Parameters actually used by the campaign, as stored in the `npz` metadata (all: seed 42, `--n-blocks` 3, i.e. three
+  conjugate block pairs, `symbols` of shape (3 variants, 3 blocks, T, n_steps)):
+
+  | q | T | n_steps (script constant) | conjugate-pair indices c | command |
+  |---|---|---|---|---|
+  | 29 | 100000 (= script default) | 8 | 1, 1, 1 | `--primes 29 211 --T 100000` |
+  | 61 | 20000 | 12 | 17, 20, 22 | `--primes 61 101 --T 20000` |
+  | 101 | 20000 | 14 | 32, 32, 50 | `--primes 61 101 --T 20000` |
+  | 211 | 100000 | 12 (fallback constant) | 33, 82, 30 | `--primes 29 211 --T 100000` |
+
+  The script default `--T` is 100000, so q = 29 and 211 are the runs at the default and q = 61, 101 the runs with
+  `--T 20000`; the note states these values per prime (Section "Numerical Evidence").
+- Default output directory of `trajectory_branching.py`: `code/traj_outputs/` (`OUTPUT_DIR = HERE/traj_outputs`);
+  `--out-dir` overrides it. `.gitignore` excludes the regenerated `code/traj_outputs/*.npz`.
 - `trajectory_branching_h.pdf` (the figure of the note, `\includegraphics{../code/trajectory_branching_h}`) is the
   output of the 4 July 2026 campaign, committed as a binary; `traj_outputs/trajectory_branching_h.pdf` is a byte-identical
   duplicate. The command that regenerates the figure is given in the README.
@@ -61,7 +76,8 @@ No computation changed.
 
 | script | inputs / arguments | outputs | seed | claim supported |
 |---|---|---|---|---|
-| `trajectory_branching.py` | `--primes` (default 29 61 101), `--T` (default 100000), `--n-blocks` (3), `--seed` (42), `--out-dir`, `--force`, `--plot-only`; imports `spectral_O12` | `q{q}_traj.npz`, `trajectory_branching_h.pdf`, entropy-rate tables on stdout | 42 (+q), phi0: 777000+q | Section "Numerical Evidence": the figure, the V1 collapse control, the V2 rate approaching log(1+sqrt 2), the V3 rank sequence 1, 5, 13, 25, ... and the sampled counts of Table `tab:pell` (see the known debt in the README) |
+| `trajectory_branching.py` | `--primes` (default 29 61 101), `--T` (default 100000), `--n-blocks` (3), `--seed` (42), `--out-dir` (default `code/traj_outputs/`), `--force`, `--plot-only`; imports `spectral_O12` | `q{q}_traj.npz`, `trajectory_branching_h.pdf`, entropy-rate tables on stdout | 42 (+q), phi0: 777000+q | Section "Numerical Evidence": the figure, the V1 collapse control, the V2 rate approaching log(1+sqrt 2), the V3 rank sequence 1, 5, 13, 25, ...; it generates the q = 211 data read by `pell_counts.py` |
+| `pell_counts.py` | `--data-dir` (default `code/traj_outputs/`; reads `q211_traj.npz`), `--regenerate` (recompute the q = 211 symbols in memory), `--exact-only`; imports `trajectory_branching` | table and `PASS` on stdout, exit status 1 on any mismatch with the note | deterministic exact part; sampled part: path ensemble `default_rng(42 + 211)` (the generator state `run_one_prime` uses first), symbols from the npz | Table `tab:pell` (exact N_b(n) by Pell recursion, transfer matrix and enumeration; distinct sampled b-sequences and distinct V2 profiles, q = 211, n = 1..12; 8096, 18675, 37394 at n = 10, 11, 12) and the epsilon = 10^-3 refinement h_2 = 0.885, 0.881, 0.877 (n = 5, 6, 7, mean of the three blocks) |
 | `v3_exact_check.py` | none (q = 101, 211; n <= 7) | PASS/FAIL lines on stdout, exit code | 1, 2 | Table `tab:v3-count` and the verified checks C1-C5 of Section 6 (Gabor rank, geodesic death, outward geodesic count, closed-form class count, Chebotarev witness) |
 | `amirror_recon.py` | none; imports `v3_exact_check` | three findings on stdout | 7 | Recon of the a-mirror front: real-Fourier probes collapse to the Burnside count (4, 10, 24, 54, 116), single-edge probes are degenerate, two-edge probes separate; supports the motivation of Section 6.5, no number printed in the note |
 | `amirror_mixed_coeff.py` | none; imports `v3_exact_check` | certification lines, `ALL PASS` | 11 | Remark `rem:amirror-certification`: eps^2 identity and kernel formula for the mixed two-anchor coefficient S |
@@ -77,9 +93,3 @@ No computation changed.
   not in this repository.
 - The docstrings of `v3_exact_check.py` and `amirror_recon.py` announce "a few minutes" of runtime; the measured
   runtime is a few seconds (see the README).
-- No committed script computes (i) the distinct-b-sequence / distinct-profile columns of Table `tab:pell`, (ii) the
-  post-hoc refinement eps = 1e-3 quoted for q = 211 (`h_2(n) = 0.885, 0.881, 0.877`). On 8 October 2026 both were
-  recomputed ad hoc from the stored q = 211 data with the functions of `trajectory_branching.py`
-  (`sample_paths`, `estimators_for_eps`) and agree with the note; the ad-hoc snippets are not in the repository.
-- The tex states `T = 2 x 10^4` for `q <= 101`, whereas the stored `q = 29` data have `T = 10^5`
-  (q = 61, 101: `T = 2 x 10^4`; q = 211: `T = 10^5`). The README command uses the values of the stored data.
